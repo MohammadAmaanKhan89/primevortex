@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PrimeVortex Terms & Conditions — Read our terms carefully before using PrimeVortex services.">
+<title>Terms & Conditions | PrimeVortex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #FF1A1A;
+    --red-dark: #CC0000;
+    --red-glow: rgba(255,26,26,0.15);
+    --white: #FFFFFF;
+    --off-white: #F0F0F0;
+    --light-gray: #B0B0B0;
+    --mid-gray: #555555;
+    --dark-gray: #1A1A1A;
+    --bg: #0A0A0A;
+    --bg-card: #111111;
+    --bg-card2: #161616;
+    --border: rgba(255,255,255,0.07);
+    --border-red: rgba(255,26,26,0.3);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  .red { color: var(--red); }
+
+  body {
+    background: var(--bg);
+    color: var(--off-white);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 2px; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    text-align: center;
+    padding: 120px 24px 80px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,26,26,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(255,26,26,0.05) 0%, transparent 60%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 80%);
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: '';
+    width: 30px;
+    height: 1px;
+    background: var(--red);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 12vw, 130px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s ease forwards;
+  }
+
+  .hero-title span { color: var(--red); }
+
+  .hero-subtitle {
+    margin-top: 28px;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--light-gray);
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s ease forwards;
+  }
+
+  .hero-date {
+    display: inline-block;
+    margin-top: 32px;
+    padding: 10px 24px;
+    border: 1px solid var(--border-red);
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s ease forwards;
+  }
+
+  .hero-scroll-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, var(--red), transparent);
+    opacity: 0;
+    animation: fadeIn 1s 1.2s ease forwards;
+  }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 40px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 28px;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  .nav-badge {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--light-gray);
+    padding: 6px 16px;
+    border: 1px solid var(--border);
+  }
+
+  /* ─── LAYOUT ─── */
+  .page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .content-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    align-items: start;
+    padding: 80px 0 120px;
+  }
+
+  /* ─── TOC ─── */
+  .toc {
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+  }
+
+  .toc::-webkit-scrollbar { width: 2px; }
+  .toc::-webkit-scrollbar-thumb { background: var(--border-red); }
+
+  .toc-label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toc-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-red);
+  }
+
+  .toc-list { list-style: none; }
+
+  .toc-item { margin-bottom: 2px; }
+
+  .toc-link {
+    display: block;
+    padding: 7px 12px;
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--mid-gray);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .toc-link:hover, .toc-link.active {
+    color: var(--white);
+    border-left-color: var(--red);
+    background: rgba(255,26,26,0.05);
+    padding-left: 16px;
+  }
+
+  .toc-sub {
+    padding-left: 24px;
+    font-size: 12px;
+    color: var(--mid-gray);
+  }
+
+  /* ─── SECTIONS ─── */
+  .section-chapter {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    margin-top: 80px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-red);
+  }
+
+  .section-chapter:first-child { margin-top: 0; }
+
+  .chapter-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    line-height: 1;
+    color: var(--red);
+    opacity: 0.4;
+    min-width: 60px;
+  }
+
+  .chapter-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 38px);
+    letter-spacing: 2px;
+    color: var(--white);
+  }
+
+  /* ─── ACCORDION ─── */
+  .accordion { border: 1px solid var(--border); margin-bottom: 12px; }
+
+  .accordion-header {
+    width: 100%;
+    background: var(--bg-card);
+    border: none;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .accordion-header:hover { background: var(--bg-card2); }
+
+  .accordion-title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: left;
+  }
+
+  .accordion-icon {
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--border-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, background 0.2s;
+  }
+
+  .accordion-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--red);
+    transition: transform 0.3s ease;
+  }
+
+  .accordion.open .accordion-icon { background: var(--red); }
+  .accordion.open .accordion-icon svg { stroke: var(--white); transform: rotate(45deg); }
+
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .accordion.open .accordion-body { max-height: 2000px; }
+
+  .accordion-content {
+    padding: 0 24px 24px;
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+  }
+
+  .accordion-content p {
+    color: var(--light-gray);
+    margin-bottom: 14px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .accordion-content p:last-child { margin-bottom: 0; }
+
+  .acc-list {
+    list-style: none;
+    margin: 12px 0;
+  }
+
+  .acc-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--light-gray);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .acc-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  /* ─── CONTACT SECTION ─── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .contact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .contact-card:hover {
+    border-color: var(--border-red);
+    transform: translateY(-2px);
+  }
+
+  .contact-label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 8px;
+  }
+
+  .contact-value {
+    font-size: 13px;
+    color: var(--off-white);
+    word-break: break-all;
+  }
+
+  .contact-value a {
+    color: var(--off-white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-value a:hover { color: var(--red); }
+
+  /* ─── RED DIVIDER ─── */
+  .red-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 48px 0;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+
+  .red-divider.revealed { opacity: 1; transform: translateX(0); }
+
+  .red-divider::before {
+    content: '';
+    width: 40px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .red-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .divider-text {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--red);
+    white-space: nowrap;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── FOOTER ─── */
+  footer { background: #000; border-top: 1px solid var(--border); padding: 64px 5% 28px; }
+  .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 52px; margin-bottom: 48px; }
+  .f-brand p.desc { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.75; margin: 14px 0; max-width: 280px; }
+  .f-tagline { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.24); margin-top: 4px; }
+  .f-social { display: flex; gap: 8px; margin-top: 20px; }
+  .f-social-btn { width: 34px; height: 34px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; font-weight: 700; transition: all 0.25s; clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%); }
+  .f-social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+  .f-col h5 { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,26,26,0.2); }
+  .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+  .f-col ul li a { font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.2s, padding-left 0.2s; display: flex; align-items: center; gap: 7px; }
+  .f-col ul li a::before { content: '›'; color: var(--red); font-size: 14px; }
+  .f-col ul li a:hover { color: var(--red); padding-left: 4px; }
+  .f-contact-row { font-size: 12px; color: rgba(255,255,255,0.38); margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+  .footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.22); }
+  .footer-bottom .footer-links { margin-top: 6px; }
+  .footer-bottom .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+  .footer-bottom .footer-links a:hover { color: #fff; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .content-layout {
+      grid-template-columns: 1fr;
+    }
+    .toc {
+      position: relative;
+      top: 0;
+      max-height: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    nav { padding: 0 20px; }
+    .nav-badge { display: none; }
+    footer { padding: 32px 20px; }
+  }
+
+  @media (max-width: 600px) {
+    .chapter-num { font-size: 36px; min-width: 44px; }
+    .hero-title { font-size: 54px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html#hero" class="nav-logo">PRIME<span>VORTEX</span></a>
+  <span class="nav-badge">Legal Document</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Legal Agreement</div>
+    <h1 class="hero-title">Terms &<br><span>Conditions</span></h1>
+    <p class="hero-subtitle">Please read these Terms &amp; Conditions carefully before using PrimeVortex services.</p>
+    <span class="hero-date" id="last-updated">Last Updated: June 8, 2025</span>
+  </div>
+  <div class="hero-scroll-line"></div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrapper">
+  <div class="content-layout">
+
+    <!-- TABLE OF CONTENTS -->
+    <aside class="toc">
+      <div class="toc-label">Contents</div>
+      <ul class="toc-list">
+        <li class="toc-item"><a href="#acceptance" class="toc-link">01. Acceptance of Terms</a></li>
+        <li class="toc-item"><a href="#moderation" class="toc-link">02. Content Moderation</a></li>
+        <li class="toc-item"><a href="#disclosure" class="toc-link">03. Account Disclosure</a></li>
+        <li class="toc-item"><a href="#services" class="toc-link">04. Services</a></li>
+        <li class="toc-item toc-sub"><a href="#creative-briefs" class="toc-link">— Creative Briefs</a></li>
+        <li class="toc-item toc-sub"><a href="#revisions" class="toc-link">— Revision Policy</a></li>
+        <li class="toc-item toc-sub"><a href="#payments" class="toc-link">— Payments</a></li>
+        <li class="toc-item"><a href="#accounts" class="toc-link">05. User Accounts</a></li>
+        <li class="toc-item"><a href="#ownership" class="toc-link">06. Ownership & IP</a></li>
+        <li class="toc-item"><a href="#privacy" class="toc-link">07. Privacy</a></li>
+        <li class="toc-item"><a href="#eligibility" class="toc-link">08. Eligibility</a></li>
+        <li class="toc-item"><a href="#communications" class="toc-link">09. Communications</a></li>
+        <li class="toc-item"><a href="#liability" class="toc-link">10. Liability</a></li>
+        <li class="toc-item"><a href="#contact" class="toc-link">11. Contact</a></li>
+      </ul>
+    </aside>
+
+    <!-- CONTENT -->
+    <main>
+
+      <!-- CHAPTER 1 -->
+      <div class="section-chapter reveal" id="acceptance">
+        <div class="chapter-num">01</div>
+        <h2 class="chapter-title">GENERAL TERMS</h2>
+      </div>
+
+      <div class="accordion reveal open">
+        <button class="accordion-header" aria-expanded="true">
+          <span class="accordion-title">Acceptance of Terms</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>By using PrimeVortex and registering as a client, you agree to be legally bound by these Terms &amp; Conditions, including any policies referenced herein.</p>
+            <p>By placing an order with PrimeVortex, you acknowledge that you have read, understood, and agreed to all applicable terms.</p>
+            <p>PrimeVortex reserves the right to modify these Terms &amp; Conditions at any time. Continued use of the website and services constitutes acceptance of any updates.</p>
+            <p>Throughout these Terms, all services, website content, text, graphics, images, user interfaces, designs, and materials available through PrimeVortex shall collectively be referred to as the "Website" and/or "Service."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="red-divider reveal" id="moderation"><span class="divider-text">Section 02</span></div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Content Moderation &amp; Compliance</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex reserves the right, at its sole discretion, to review submitted projects, refuse projects, remove content, or suspend services. This applies to any content that is:</p>
+            <ul class="acc-list">
+              <li>Illegal or fraudulent in nature</li>
+              <li>Obscene, defamatory, or discriminatory</li>
+              <li>In violation of intellectual property rights</li>
+              <li>Encouraging religious, racial, or ethnic hatred</li>
+            </ul>
+            <p>PrimeVortex may cooperate with law enforcement authorities where required by law.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="red-divider reveal" id="disclosure"><span class="divider-text">Section 03</span></div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Account Information Disclosure</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex may access, preserve, and disclose account information when reasonably necessary to:</p>
+            <ul class="acc-list">
+              <li>Comply with legal obligations</li>
+              <li>Enforce these Terms and resolve disputes</li>
+              <li>Respond to customer support requests</li>
+              <li>Protect users, clients, and public safety</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 2 -->
+      <div class="section-chapter reveal" id="services" style="margin-top:80px;">
+        <div class="chapter-num">02</div>
+        <h2 class="chapter-title">SERVICES</h2>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Service Description</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex provides professional digital services including:</p>
+            <ul class="acc-list">
+              <li>Logo Design</li>
+              <li>Website Design &amp; Development</li>
+              <li>Mobile Application Development</li>
+              <li>Branding Solutions</li>
+              <li>Related Creative Services</li>
+            </ul>
+            <p>Clients may submit project requirements ("Creative Briefs"), request revisions ("Revision Briefs"), and receive deliverables ("Responses") from PrimeVortex team members.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="red-divider reveal" id="creative-briefs"><span class="divider-text">Section 04b</span></div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Creative Briefs</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Clients are responsible for providing accurate project requirements, supplying reference materials where necessary, communicating deadlines, and reviewing project details before submission.</p>
+            <p>PrimeVortex reserves the right to reject incomplete or inappropriate project requests.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Reviewing Deliverables</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Upon delivery of a project, clients must review the delivered work promptly. Failure to communicate concerns within a reasonable timeframe may constitute acceptance of the work. Revision requests must clearly specify desired modifications.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="red-divider reveal" id="revisions"><span class="divider-text">Section 04c</span></div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Revision Policy</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex provides revision cycles according to the selected package. Revision requests should focus on improving the current design direction.</p>
+            <p>By the third revision cycle, requests should generally involve modifications to the approved concept rather than a complete redesign. PrimeVortex reserves the right to charge additional fees for major redesign requests that significantly depart from the approved direction.</p>
+            <p>Additional revision fees may apply after client approval.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Service Packages</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex may offer service packages including but not limited to:</p>
+            <ul class="acc-list">
+              <li>Logo Startup Package</li>
+              <li>Logo Classic Package</li>
+              <li>Logo Premium Package</li>
+              <li>Logo Unlimited Package</li>
+            </ul>
+            <p>Package features, pricing, and deliverables may be updated periodically.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="red-divider reveal" id="payments"><span class="divider-text">Section 04d</span></div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Payments &amp; Billing</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Clients agree to pay all applicable fees associated with selected services. Accepted payment methods may include:</p>
+            <ul class="acc-list">
+              <li>Credit Cards and Debit Cards</li>
+              <li>Online Payment Services</li>
+              <li>Other approved payment methods</li>
+            </ul>
+            <p>Receipts will be provided electronically. PrimeVortex reserves the right to modify pricing and service fees at any time.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 3 -->
+      <div class="section-chapter reveal" id="accounts" style="margin-top:80px;">
+        <div class="chapter-num">03</div>
+        <h2 class="chapter-title">USER ACCOUNTS</h2>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Account Registration</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>To use PrimeVortex services, users may be required to create an account. Clients agree to provide accurate information, maintain account security, and update information when necessary.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Password Security</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Clients are responsible for safeguarding usernames, passwords, and login credentials. Any suspected unauthorized access must be reported immediately.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Security Breaches</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>If unauthorized access occurs due to user negligence, the user agrees to cooperate with PrimeVortex in investigating the incident.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 4 -->
+      <div class="section-chapter reveal" id="ownership" style="margin-top:80px;">
+        <div class="chapter-num">04</div>
+        <h2 class="chapter-title">OWNERSHIP & IP</h2>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Client Content Ownership</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Clients retain ownership of content submitted to PrimeVortex. By submitting materials, clients grant PrimeVortex the rights necessary to process, review, and complete the requested services.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">PrimeVortex Rights</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Clients grant PrimeVortex a limited license to use submitted materials solely for project execution, internal operations, archival purposes, and service fulfillment.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 5 -->
+      <div class="section-chapter reveal" id="privacy" style="margin-top:80px;">
+        <div class="chapter-num">05</div>
+        <h2 class="chapter-title">PRIVACY</h2>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Privacy &amp; Confidentiality</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex follows commercially reasonable efforts to protect customer information. However, no internet-based service can guarantee complete security.</p>
+            <p>Users acknowledge that PrimeVortex cannot guarantee protection against cyber attacks, data breaches, or unauthorized third-party access.</p>
+            <p>For detailed information, refer to the PrimeVortex Privacy Policy.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 6 -->
+      <div class="section-chapter reveal" id="eligibility" style="margin-top:80px;">
+        <div class="chapter-num">06</div>
+        <h2 class="chapter-title">ELIGIBILITY</h2>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Eligibility Requirements</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Users must be at least 18 years old, provide accurate registration information, and have authority to act on behalf of any organization represented. PrimeVortex reserves the right to reject registrations at its discretion.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Prohibited Activities</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Users may not engage in the following:</p>
+            <ul class="acc-list">
+              <li>Reverse engineer website software</li>
+              <li>Attempt unauthorized access to systems</li>
+              <li>Distribute malware or spam users</li>
+              <li>Interfere with website functionality</li>
+              <li>Conduct security testing without authorization</li>
+            </ul>
+            <p>Violations may result in account termination and legal action.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Website Availability</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex does not guarantee uninterrupted access to its website or services. The company shall not be liable for interruptions caused by server outages, internet disruptions, maintenance, technical failures, or third-party service providers.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 7 -->
+      <div class="section-chapter reveal" id="communications" style="margin-top:80px;">
+        <div class="chapter-num">07</div>
+        <h2 class="chapter-title">COMMUNICATIONS</h2>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Communication Consent</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>By using PrimeVortex services, users consent to receive project updates, status notifications, customer support communications, service announcements, and promotional emails.</p>
+            <p>Users may unsubscribe from promotional communications at any time.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 8 -->
+      <div class="section-chapter reveal" id="liability" style="margin-top:80px;">
+        <div class="chapter-num">08</div>
+        <h2 class="chapter-title">LIABILITY</h2>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">No Guarantee</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>PrimeVortex does not guarantee specific business outcomes, increased revenue, search engine rankings, or market success. All services are provided on an "as available" basis.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Intellectual Property Responsibility</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>Clients are responsible for ensuring lawful use of images, photos, graphics, icons, logos, fonts, and media assets. PrimeVortex is not responsible for licensing costs associated with third-party materials unless explicitly included in the service agreement.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="accordion-header">
+          <span class="accordion-title">Limitation of Liability</span>
+          <span class="accordion-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-content">
+            <p>To the fullest extent permitted by law, PrimeVortex shall not be liable for indirect damages, consequential damages, loss of profits, business interruption, or data loss resulting from use of the Website or Services.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHAPTER 9 CONTACT -->
+      <div class="section-chapter reveal" id="contact" style="margin-top:80px;">
+        <div class="chapter-num">09</div>
+        <h2 class="chapter-title">CONTACT</h2>
+      </div>
+
+      <div class="reveal">
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:+923362099094">+92 336 2099094</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-label">General Email</div>
+            <div class="contact-value"><a href="mailto:primevortex1472@gmail.com">primevortex1472@gmail.com</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-label">Sales &amp; Support</div>
+            <div class="contact-value"><a href="mailto:sales@primevortex.co">sales@primevortex.co</a></div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-label">Website</div>
+            <div class="contact-value"><a href="http://www.primevortex.co" target="_blank">www.primevortex.co</a></div>
+          </div>
+          <div class="contact-card" style="grid-column: 1 / -1;">
+            <div class="contact-label">Address</div>
+            <div class="contact-value">Tariq Center Office #201, 2nd Floor, Main Tariq Road, PECHS, Karachi, Pakistan</div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="f-brand">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="48" r="36" stroke="#FF1A1A" stroke-width="1.5" opacity="0.4"/>
+          <path d="M30 28h22c10 0 16 5 16 13s-6 13-16 13H41v16H30V28z M41 46h11c5.5 0 8.5-2 8.5-5.5S57.5 35 52 35H41v11z" fill="white"/>
+          <path d="M43 66L53 46L63 66" fill="#FF1A1A"/>
+        </svg>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:3px;color:#fff">PRIME</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:3px;color:#FF1A1A;line-height:0.85">VORTEX</div>
+        </div>
+      </div>
+      <p class="f-tagline" style="margin-top:10px">BUILDING SOLUTIONS. <span class="red">POWERING FUTURES.</span></p>
+      <p class="desc">Karachi's premier digital agency specializing in Logo Design, Website Development, and Mobile Applications.</p>
+      <div class="f-social">
+        <a href="#" class="f-social-btn">𝕏</a>
+        <a href="#" class="f-social-btn">in</a>
+        <a href="#" class="f-social-btn">fb</a>
+        <a href="#" class="f-social-btn">ig</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="index.html#services">Logo Design</a></li>
+        <li><a href="index.html#services">Website Development</a></li>
+        <li><a href="index.html#services">Mobile Applications</a></li>
+        <li><a href="index.html#services">Brand Strategy</a></li>
+        <li><a href="index.html#services">UI/UX Design</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="index.html#hero">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Contact</h5>
+      <p class="f-contact-row"><span style="color:var(--red)">📞</span> +92 336 2099094</p>
+      <p class="f-contact-row"><span style="color:var(--red)">✉</span> Primevortex1472@gmail.com</p>
+      <p class="f-contact-row"><span style="color:var(--red)">🌐</span> www.primevortex.co</p>
+      <p class="f-contact-row"><span style="color:var(--red)">📍</span> Tariq Center #201, PECHS, Karachi</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span class="red">PrimeVortex</span>. All Rights Reserved.</p>
+    <p>Designed with passion in <span class="red">Karachi, Pakistan</span></p>
+    <p class="footer-links"><a href="PrivacyPolicy.html">Privacy Policy</a> | <a href="RefundPolicy.html">Refund Policy</a> | <a href="Terms&amp;Conditions.html">Terms &amp; Conditions</a></p>
+  </div>
+</footer>
+
+<script>
+  // Set current date
+  const d = new Date();
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('last-updated').textContent = 'Last Updated: ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+
+  // Accordion
+  document.querySelectorAll('.accordion-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const acc = btn.closest('.accordion');
+      const isOpen = acc.classList.contains('open');
+      acc.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', !isOpen);
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('revealed');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal, .red-divider').forEach(el => observer.observe(el));
+
+  // TOC active state
+  const sections = document.querySelectorAll('[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  const tocObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const match = document.querySelector('.toc-link[href="#' + e.target.id + '"]');
+        if (match) match.classList.add('active');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => tocObserver.observe(s));
+</script>
+</body>
+</html>
