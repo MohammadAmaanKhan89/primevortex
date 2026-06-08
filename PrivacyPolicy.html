@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy — PrimeVortex</title>
+<meta name="description" content="PrimeVortex Privacy Policy — Learn how we collect, use, protect, and manage your personal information."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#07080a;
+  --deep:#0d0d0d;
+  --surface:#111111;
+  --red:#FF1A1A;
+  --red-dim:rgba(255,26,26,0.12);
+  --red-border:rgba(255,26,26,0.3);
+  --white:#f8fafc;
+  --muted:#94a3b8;
+  --glass:rgba(255,255,255,0.03);
+  --glass-border:rgba(255,255,255,0.07);
+  --font-display:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+.red{color:var(--red)}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;line-height:1.6}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--deep)}
+::-webkit-scrollbar-thumb{background:var(--red);border-radius:2px}
+
+/* ── NAVBAR ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.25rem 0;transition:all .4s}
+nav.scrolled{background:rgba(7,8,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border);padding:.9rem 0}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:var(--white);letter-spacing:-.02em}
+.nav-logo span{color:var(--red)}
+.nav-back{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1.1rem;border:1px solid var(--glass-border);border-radius:50px;font-size:.82rem;font-weight:600;color:var(--muted);transition:all .25s;font-family:var(--font-display)}
+.nav-back:hover{border-color:var(--red-border);color:var(--white);background:var(--red-dim)}
+
+/* ── HERO ── */
+.hero{min-height:55vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:8rem 2rem 5rem;text-align:center}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.hero-glow{position:absolute;border-radius:50%;filter:blur(100px);opacity:.18}
+.glow-1{width:700px;height:400px;background:radial-gradient(var(--red),transparent);top:-100px;left:50%;transform:translateX(-50%);animation:breathe 7s ease-in-out infinite}
+.glow-2{width:300px;height:300px;background:radial-gradient(#ff6b6b,transparent);bottom:-80px;right:5%;opacity:.1;animation:breathe 9s 3s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.1)}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:50px 50px;mask-image:radial-gradient(ellipse at 50% 0%,black 30%,transparent 75%)}
+.hero-content{position:relative;z-index:2;max-width:760px}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;padding:.38rem 1rem;background:var(--red-dim);border:1px solid var(--red-border);border-radius:50px;font-size:.72rem;font-weight:700;color:var(--red);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.75rem;animation:fadeUp .7s ease both}
+.hero-badge::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.6)}}
+.hero-title{font-family:var(--font-display);font-size:clamp(3rem,6vw,5rem);font-weight:800;line-height:1.06;letter-spacing:-.035em;margin-bottom:1.25rem;animation:fadeUp .7s .12s ease both}
+.hero-title span{color:var(--red)}
+.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.8;max-width:620px;margin:0 auto 1.5rem;animation:fadeUp .7s .24s ease both}
+.hero-date{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;font-size:.78rem;font-weight:600;color:var(--muted);font-family:var(--font-display);animation:fadeUp .7s .36s ease both;letter-spacing:.04em}
+.hero-date::before{content:'';display:block;width:8px;height:8px;border-radius:2px;background:var(--red)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RED DIVIDER ── */
+.red-line{height:1px;background:linear-gradient(90deg,transparent 0%,var(--red) 40%,var(--red) 60%,transparent 100%);opacity:.5;margin:0}
+.red-line-soft{height:1px;background:linear-gradient(90deg,transparent,rgba(255,26,26,.25),transparent);margin:0}
+
+/* ── LAYOUT ── */
+.page-body{padding:5rem 0 6rem;position:relative}
+.page-body::before{content:'';position:absolute;top:0;left:2rem;width:1px;height:100%;background:linear-gradient(to bottom,var(--red),rgba(255,26,26,.1),transparent);opacity:.35}
+.toc-sidebar{position:sticky;top:5.5rem;align-self:flex-start}
+.page-grid{display:grid;grid-template-columns:260px 1fr;gap:4rem;align-items:flex-start}
+
+/* ── TOC ── */
+.toc{background:var(--glass);border:1px solid var(--glass-border);border-radius:18px;padding:1.75rem;overflow:hidden;position:relative}
+.toc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),transparent)}
+.toc-title{font-family:var(--font-display);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:1.25rem}
+.toc-links{list-style:none;display:flex;flex-direction:column;gap:.1rem}
+.toc-links a{display:flex;align-items:center;gap:.6rem;padding:.5rem .65rem;border-radius:8px;font-size:.82rem;color:var(--muted);font-weight:500;transition:all .22s;position:relative}
+.toc-links a::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--glass-border);flex-shrink:0;transition:all .22s}
+.toc-links a:hover{color:var(--white);background:rgba(255,26,26,.07)}
+.toc-links a:hover::before{background:var(--red)}
+
+/* ── CONTENT ── */
+.sections{display:flex;flex-direction:column;gap:2.5rem}
+.policy-section{background:var(--glass);border:1px solid var(--glass-border);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;transition:border-color .3s}
+.policy-section:hover{border-color:rgba(255,26,26,.2)}
+.policy-section::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:linear-gradient(to bottom,var(--red),transparent)}
+.section-num{font-family:var(--font-display);font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;opacity:.7}
+.section-head{font-family:var(--font-display);font-size:1.35rem;font-weight:800;margin-bottom:1.25rem;line-height:1.25;letter-spacing:-.02em}
+.section-head::after{content:'';display:block;width:36px;height:2px;background:var(--red);border-radius:2px;margin-top:.6rem}
+.policy-text{font-size:.9rem;color:var(--muted);line-height:1.85;margin-bottom:1rem}
+.policy-text:last-child{margin-bottom:0}
+.policy-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin:.75rem 0}
+.policy-list li{display:flex;align-items:flex-start;gap:.8rem;font-size:.875rem;color:var(--muted);line-height:1.7}
+.policy-list li::before{content:'';display:block;width:16px;height:16px;border-radius:4px;background:var(--red-dim);border:1px solid var(--red-border);flex-shrink:0;margin-top:.15rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23FF1A1A' stroke-width='1.8'%3E%3Cpath d='M3 8l3.5 3.5 6.5-7'/%3E%3C/svg%3E");background-size:10px;background-repeat:no-repeat;background-position:center}
+
+/* ── RIGHTS GRID ── */
+.rights-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin:.75rem 0}
+.right-chip{display:flex;align-items:center;gap:.5rem;padding:.65rem .9rem;background:var(--red-dim);border:1px solid var(--red-border);border-radius:10px;font-size:.78rem;font-weight:600;color:var(--white);transition:all .25s}
+.right-chip:hover{background:rgba(255,26,26,.2);transform:translateY(-2px)}
+.right-chip span{font-size:1rem}
+
+/* ── CONTACT SECTION ── */
+.contact-card{background:linear-gradient(135deg,rgba(255,26,26,.08),rgba(255,26,26,.03));border:1px solid var(--red-border);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden}
+.contact-card::after{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(var(--red),transparent);opacity:.08;pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:1.5rem}
+.contact-item{display:flex;flex-direction:column;gap:.3rem}
+.contact-label{font-size:.68rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red)}
+.contact-value{font-size:.875rem;color:var(--white);font-weight:500;line-height:1.6}
+.contact-value a{color:var(--white);border-bottom:1px solid var(--red-border);transition:border-color .2s}
+.contact-value a:hover{border-color:var(--red)}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.08s}
+.reveal-d2{transition-delay:.16s}
+.reveal-d3{transition-delay:.24s}
+
+/* ── FOOTER ── */
+footer { background: #000; border-top: 1px solid var(--border); padding: 64px 5% 28px; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 52px; margin-bottom: 48px; }
+.f-brand p.desc { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.75; margin: 14px 0; max-width: 280px; }
+.f-tagline { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.24); margin-top: 4px; }
+.f-social { display: flex; gap: 8px; margin-top: 20px; }
+.f-social-btn { width: 34px; height: 34px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; font-weight: 700; transition: all 0.25s; clip-path: polygon(4px 0%,100% 0%,calc(100% - 4px) 100%,0% 100%); }
+.f-social-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.f-col h5 { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,26,26,0.2); }
+.f-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+.f-col ul li a { font-size: 13px; color: rgba(255,255,255,0.38); text-decoration: none; transition: color 0.2s, padding-left 0.2s; display: flex; align-items: center; gap: 7px; }
+.f-col ul li a::before { content: '›'; color: var(--red); font-size: 14px; }
+.f-col ul li a:hover { color: var(--red); padding-left: 4px; }
+.f-contact-row { font-size: 12px; color: rgba(255,255,255,0.38); margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.22); }
+.footer-bottom .footer-links { margin-top: 6px; }
+.footer-bottom .footer-links a { color: rgba(255,255,255,0.65); text-decoration: none; transition: color 0.2s; }
+.footer-bottom .footer-links a:hover { color: #fff; }
+
+/* ── BACK TO TOP ── */
+.top-btn{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--red);border:none;color:#fff;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(10px);transition:all .3s;z-index:999}
+.top-btn.show{opacity:1;transform:translateY(0)}
+.top-btn:hover{background:#e01010;transform:translateY(-3px)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .page-grid{grid-template-columns:1fr}
+  .toc-sidebar{position:static}
+  .page-body::before{display:none}
+}
+@media(max-width:600px){
+  .hero-title{font-size:2.6rem}
+  .policy-section{padding:1.75rem}
+  .rights-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Prime<span>Vortex</span></a>
+      <a href="index.html" class="nav-back">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="hero-grid"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><span></span>Legal Document</div>
+    <h1 class="hero-title">Privacy <span>Policy</span></h1>
+    <p class="hero-sub">Your privacy is important to us. This Privacy Policy explains how PrimeVortex collects, uses, protects, and manages your information.</p>
+    <div class="hero-date" id="lastUpdated"></div>
+  </div>
+</section>
+
+<div class="red-line"></div>
+
+<!-- PAGE BODY -->
+<div class="page-body">
+  <div class="container">
+    <div class="page-grid">
+
+      <!-- TABLE OF CONTENTS -->
+      <aside class="toc-sidebar reveal">
+        <div class="toc">
+          <div class="toc-title">Contents</div>
+          <ul class="toc-links">
+            <li><a href="#info-gather">What We Gather</a></li>
+            <li><a href="#info-use">How We Use It</a></li>
+            <li><a href="#info-protect">How We Protect It</a></li>
+            <li><a href="#disclosure">Third-Party Disclosure</a></li>
+            <li><a href="#gdpr">GDPR Rights</a></li>
+            <li><a href="#consent">Consent</a></li>
+            <li><a href="#retention">Data Retention</a></li>
+            <li><a href="#third-party">Third-Party Services</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#updates">Policy Updates</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- POLICY SECTIONS -->
+      <main class="sections">
+
+        <!-- 01 -->
+        <div class="policy-section reveal" id="info-gather">
+          <div class="section-num">Section 01</div>
+          <h2 class="section-head">What Information Do We Gather?</h2>
+          <p class="policy-text">This Privacy Policy is designed to explain our policies regarding customer personal data collected through our website and services.</p>
+          <p class="policy-text">When you submit an inquiry online, you may be asked to provide basic information through our contact forms so that we can communicate with you regarding your requirements.</p>
+          <p class="policy-text">Information collected may include:</p>
+          <ul class="policy-list">
+            <li>Full Name</li>
+            <li>Email Address</li>
+            <li>Phone Number</li>
+            <li>Country</li>
+            <li>Project Requirements</li>
+            <li>Any information voluntarily provided by the user</li>
+          </ul>
+          <p class="policy-text">We only collect information necessary to provide our services and respond to your requests.</p>
+        </div>
+
+        <!-- 02 -->
+        <div class="policy-section reveal reveal-d1" id="info-use">
+          <div class="section-num">Section 02</div>
+          <h2 class="section-head">What Do We Use Your Information For?</h2>
+          <p class="policy-text">PrimeVortex uses personal data to:</p>
+          <ul class="policy-list">
+            <li>Process and manage customer inquiries</li>
+            <li>Handle project requests and service orders</li>
+            <li>Improve customer support</li>
+            <li>Improve website functionality and user experience</li>
+            <li>Provide updates regarding our services</li>
+            <li>Share relevant offers and announcements</li>
+            <li>Improve overall service quality based on customer feedback</li>
+          </ul>
+          <p class="policy-text">Your information helps us provide better solutions and improve our services.</p>
+        </div>
+
+        <!-- 03 -->
+        <div class="policy-section reveal" id="info-protect">
+          <div class="section-num">Section 03</div>
+          <h2 class="section-head">How Do We Protect Your Information?</h2>
+          <p class="policy-text">PrimeVortex uses secure technologies and industry-standard security measures to protect customer information.</p>
+          <p class="policy-text">Security measures include:</p>
+          <ul class="policy-list">
+            <li>Secure Socket Layer (SSL) encryption</li>
+            <li>Protected servers with restricted access</li>
+            <li>Restricted access to sensitive information</li>
+            <li>Continuous security monitoring and maintenance</li>
+          </ul>
+          <p class="policy-text">All information submitted through our website is handled with appropriate security measures to help protect against unauthorized access, disclosure, or misuse.</p>
+        </div>
+
+        <!-- 04 -->
+        <div class="policy-section reveal reveal-d1" id="disclosure">
+          <div class="section-num">Section 04</div>
+          <h2 class="section-head">Do We Disclose Any Information To Outside Parties?</h2>
+          <p class="policy-text">PrimeVortex does not sell, trade, rent, or transfer personally identifiable information to outside parties.</p>
+          <p class="policy-text">Exceptions may include trusted parties such as:</p>
+          <ul class="policy-list">
+            <li>Trusted business partners</li>
+            <li>Service providers</li>
+            <li>Subsidiaries</li>
+            <li>Third-party vendors assisting with website operations or business services</li>
+          </ul>
+          <p class="policy-text">Such parties are required to maintain confidentiality and use the information solely for authorized purposes.</p>
+          <p class="policy-text">Non-personally identifiable information may be used for marketing analysis, website analytics, advertising performance, and business improvement purposes.</p>
+        </div>
+
+        <!-- 05 -->
+        <div class="policy-section reveal" id="gdpr">
+          <div class="section-num">Section 05</div>
+          <h2 class="section-head">General Data Protection Regulation (GDPR)</h2>
+          <p class="policy-text">PrimeVortex respects and supports GDPR principles. We do not disclose personally identifiable information to unauthorized third parties. All personal information provided by users is treated confidentially.</p>
+          <p class="policy-text">Under GDPR, you have the right to:</p>
+          <div class="rights-grid">
+            <div class="right-chip"><span>📋</span>Access your data</div>
+            <div class="right-chip"><span>✏️</span>Request corrections</div>
+            <div class="right-chip"><span>🗑️</span>Request deletion</div>
+            <div class="right-chip"><span>⏸️</span>Restrict processing</div>
+            <div class="right-chip"><span>↩️</span>Withdraw consent</div>
+            <div class="right-chip"><span>ℹ️</span>Request data info</div>
+          </div>
+          <p class="policy-text" style="margin-top:.75rem">Any trusted third parties assisting PrimeVortex must also maintain confidentiality and comply with applicable data protection regulations.</p>
+        </div>
+
+        <!-- 06 -->
+        <div class="policy-section reveal reveal-d1" id="consent">
+          <div class="section-num">Section 06</div>
+          <h2 class="section-head">Consent</h2>
+          <p class="policy-text">By using our website and submitting your information, you consent to the collection and processing of your personal data for the purposes outlined in this Privacy Policy.</p>
+          <p class="policy-text">Where sensitive personal information is requested, PrimeVortex will clearly explain why the information is required, how it will be used, and how it will be protected.</p>
+          <p class="policy-text">Users may withdraw their consent at any time by contacting us using the details provided below.</p>
+        </div>
+
+        <!-- 07 -->
+        <div class="policy-section reveal" id="retention">
+          <div class="section-num">Section 07</div>
+          <h2 class="section-head">Data Retention</h2>
+          <p class="policy-text">PrimeVortex retains personal information only for as long as necessary to fulfill business, legal, and operational requirements.</p>
+          <p class="policy-text">Once data is no longer required, appropriate measures will be taken to securely delete or anonymize the information in line with applicable data protection standards.</p>
+        </div>
+
+        <!-- 08 -->
+        <div class="policy-section reveal reveal-d1" id="third-party">
+          <div class="section-num">Section 08</div>
+          <h2 class="section-head">Third-Party Services</h2>
+          <p class="policy-text">Our website may utilize trusted third-party services for analytics, website hosting, security, and communication services.</p>
+          <ul class="policy-list">
+            <li>Analytics platforms (e.g. Google Analytics)</li>
+            <li>Website hosting and CDN providers</li>
+            <li>Security and monitoring services</li>
+            <li>Communication and email services</li>
+          </ul>
+          <p class="policy-text">These providers may process information solely for the purpose of delivering their services and are expected to maintain appropriate security standards.</p>
+        </div>
+
+        <!-- 09 CONTACT -->
+        <div class="policy-section reveal" id="contact">
+          <div class="section-num">Section 09</div>
+          <h2 class="section-head">Contact Us</h2>
+          <p class="policy-text">If you have any questions regarding this Privacy Policy or your personal information, please contact us using the details below.</p>
+          <div class="contact-card">
+            <div style="font-family:var(--font-display);font-size:1.05rem;font-weight:800;letter-spacing:-.01em">PrimeVortex</div>
+            <div class="contact-grid">
+              <div class="contact-item">
+                <span class="contact-label">Phone</span>
+                <div class="contact-value"><a href="tel:+923362099094">+92 336 2099094</a></div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Email</span>
+                <div class="contact-value"><a href="mailto:primevortex1472@gmail.com">primevortex1472@gmail.com</a></div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Website</span>
+                <div class="contact-value"><a href="http://www.primevortex.com" target="_blank">www.primevortex.com</a></div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-label">Office Address</span>
+                <div class="contact-value">Tariq Center Office #201, 2nd Floor,<br>Main Tariq Road, PECHS,<br>Karachi, Pakistan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="policy-section reveal reveal-d1" id="updates">
+          <div class="section-num">Section 10</div>
+          <h2 class="section-head">Policy Updates</h2>
+          <p class="policy-text">PrimeVortex reserves the right to modify or update this Privacy Policy at any time without prior notice.</p>
+          <p class="policy-text">Any changes will be posted on this page with an updated revision date. We encourage users to review this page periodically to stay informed.</p>
+          <p class="policy-text">Continued use of the website following any changes constitutes acceptance of the revised Privacy Policy.</p>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<div class="red-line-soft"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="f-brand">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="48" r="36" stroke="#FF1A1A" stroke-width="1.5" opacity="0.4"/>
+          <path d="M30 28h22c10 0 16 5 16 13s-6 13-16 13H41v16H30V28z M41 46h11c5.5 0 8.5-2 8.5-5.5S57.5 35 52 35H41v11z" fill="white"/>
+          <path d="M43 66L53 46L63 66" fill="#FF1A1A"/>
+        </svg>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:3px;color:#fff">PRIME</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;letter-spacing:3px;color:#FF1A1A;line-height:0.85">VORTEX</div>
+        </div>
+      </div>
+      <p class="f-tagline" style="margin-top:10px">BUILDING SOLUTIONS. <span class="red">POWERING FUTURES.</span></p>
+      <p class="desc">Karachi's premier digital agency specializing in Logo Design, Website Development, and Mobile Applications.</p>
+      <div class="f-social">
+        <a href="#" class="f-social-btn">𝕏</a>
+        <a href="#" class="f-social-btn">in</a>
+        <a href="#" class="f-social-btn">fb</a>
+        <a href="#" class="f-social-btn">ig</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="index.html#services">Logo Design</a></li>
+        <li><a href="index.html#services">Website Development</a></li>
+        <li><a href="index.html#services">Mobile Applications</a></li>
+        <li><a href="index.html#services">Brand Strategy</a></li>
+        <li><a href="index.html#services">UI/UX Design</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="index.html#hero">Home</a></li>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="index.html#portfolio">Portfolio</a></li>
+        <li><a href="index.html#testimonials">Testimonials</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Contact</h5>
+      <p class="f-contact-row"><span style="color:var(--red)">📞</span> +92 336 2099094</p>
+      <p class="f-contact-row"><span style="color:var(--red)">✉</span> Primevortex1472@gmail.com</p>
+      <p class="f-contact-row"><span style="color:var(--red)">🌐</span> www.primevortex.co</p>
+      <p class="f-contact-row"><span style="color:var(--red)">📍</span> Tariq Center #201, PECHS, Karachi</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span class="red">PrimeVortex</span>. All Rights Reserved.</p>
+    <p>Designed with passion in <span class="red">Karachi, Pakistan</span></p>
+    <p class="footer-links"><a href="PrivacyPolicy.html">Privacy Policy</a> | <a href="RefundPolicy.html">Refund Policy</a> | <a href="Terms&amp;Conditions.html">Terms &amp; Conditions</a></p>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+// Last Updated Date
+const d = new Date();
+const opts = {year:'numeric',month:'long',day:'numeric'};
+document.getElementById('lastUpdated').textContent = 'Last Updated: ' + d.toLocaleDateString('en-US', opts);
+
+// Navbar scroll
+const nav = document.getElementById('navbar');
+const topBtn = document.getElementById('topBtn');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  if (s > 60) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  if (s > 400) topBtn.classList.add('show'); else topBtn.classList.remove('show');
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); }});
+}, {threshold:0.08, rootMargin:'0px 0px -50px 0px'});
+revealEls.forEach(el => ro.observe(el));
+
+// Active TOC highlight
+const sections = document.querySelectorAll('[id]');
+const tocLinks = document.querySelectorAll('.toc-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 140) current = s.id; });
+  tocLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#'+current ? 'var(--white)' : '';
+    a.style.background = a.getAttribute('href') === '#'+current ? 'rgba(255,26,26,0.08)' : '';
+  });
+});
+</script>
+</body>
+</html>
