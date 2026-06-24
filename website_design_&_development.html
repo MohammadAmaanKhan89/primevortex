@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrimeVortex — Website Design & Development Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #FF1A1A;
+  --red-dark: #cc0000;
+  --red-glow: rgba(255,26,26,0.35);
+  --black: #000;
+  --gray: #0f0f0f;
+  --gray2: #161616;
+  --gray3: #1e1e1e;
+  --border: rgba(255,255,255,0.07);
+  --border-red: rgba(255,26,26,0.25);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #000; color: #fff; font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+
+/* ── TOPBAR ── */
+#topbar {
+  background: #0a0a0a;
+  border-bottom: 1px solid var(--border-red);
+  padding: 10px 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 13px; color: rgba(255,255,255,0.7);
+  flex-wrap: wrap; gap: 8px;
+}
+#topbar a { color: var(--red); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+#topbar .tb-right { display: flex; align-items: center; gap: 18px; }
+#topbar .tb-right a { color: rgba(255,255,255,0.7); font-weight: 600; }
+#topbar .tb-right a:hover { color: var(--red); }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(0,0,0,0.97); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%; display: flex; align-items: center; justify-content: space-between;
+  height: 70px;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo svg { width: 42px; height: 42px; }
+.nav-logo-text .prime { font-family: 'Barlow Condensed'; font-weight: 700; font-size: 19px; color: #fff; letter-spacing: 3px; display: block; }
+.nav-logo-text .vortex { font-family: 'Barlow Condensed'; font-weight: 700; font-size: 19px; color: var(--red); letter-spacing: 3px; display: block; line-height: 0.85; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px;
+  font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: color 0.2s; position: relative; padding-bottom: 4px;
+}
+.nav-links a::after { content:''; position:absolute; bottom:0; left:0; width:0; height:1.5px; background:var(--red); transition:width 0.3s; }
+.nav-links a:hover { color: #fff; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links .has-drop { position: relative; }
+.nav-links .has-drop > a::before { content: ' ▾'; }
+.nav-cta {
+  background: var(--red); color: #fff; text-decoration: none;
+  padding: 10px 26px; font-weight: 700; font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 0 20px rgba(255,26,26,0.35);
+}
+.nav-cta:hover { background: var(--red-dark); transform: scale(1.04); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+.hamburger span { width: 24px; height: 2px; background: #fff; display: block; transition: all 0.35s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── HERO ── */
+#hero {
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  overflow: hidden; padding: 80px 5% 60px;
+  background: radial-gradient(ellipse 70% 80% at 65% 50%, rgba(255,26,26,0.07) 0%, transparent 60%), #000;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image: linear-gradient(rgba(255,26,26,1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,26,26,1) 1px, transparent 1px);
+  background-size: 55px 55px;
+  animation: grid-drift 22s linear infinite;
+}
+@keyframes grid-drift { from { background-position: 0 0; } to { background-position: 55px 55px; } }
+.hero-inner { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 40px; position: relative; z-index: 2; }
+.hero-content { max-width: 52%; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 24px;
+  background: rgba(255,26,26,0.1); border: 1px solid rgba(255,26,26,0.3);
+  padding: 7px 18px; font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--red);
+  clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+}
+.hero-badge-dot { width: 7px; height: 7px; background: var(--red); border-radius: 50%; animation: pulse-dot 1.5s ease-in-out infinite; }
+@keyframes pulse-dot { 0%,100% { transform:scale(1); opacity:1; } 50% { transform:scale(1.7); opacity:0.5; } }
+.hero-headline {
+  font-family: 'Bebas Neue'; font-size: clamp(46px, 6vw, 84px);
+  line-height: 0.93; letter-spacing: 1px; margin-bottom: 22px;
+}
+.hero-headline .hl { color: var(--red); }
+.hero-sub {
+  font-size: 16px; line-height: 1.78; color: rgba(255,255,255,0.55); max-width: 500px;
+  font-weight: 300; margin-bottom: 36px;
+}
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-primary {
+  background: var(--red); color: #fff; border: none; padding: 14px 32px;
+  font-weight: 700; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 0 28px rgba(255,26,26,0.4); cursor: pointer;
+}
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(255,26,26,0.5); }
+.btn-outline {
+  background: transparent; color: #fff; text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.25); padding: 13px 32px;
+  font-weight: 600; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+  display: inline-flex; align-items: center; gap: 8px;
+  clip-path: polygon(10px 0%,100% 0%,calc(100% - 10px) 100%,0% 100%);
+  transition: border-color 0.25s, color 0.25s, transform 0.25s; cursor: pointer;
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); transform: translateY(-3px); }
+.hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+.hero-stat-num { font-family: 'Bebas Neue'; font-size: 44px; color: var(--red); line-height: 1; display: block; }
+.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
+.hero-stat + .hero-stat { border-left: 1px solid var(--border); padding-left: 40px; }
+
+/* Hero visual - web mockups */
+.hero-visual { flex-shrink: 0; width: 46%; position: relative; }
+.web-mockup-stack { position: relative; width: 100%; height: 380px; }
+.web-mockup-stack .mock {
+  position: absolute; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  transition: transform 0.4s;
+}
+.web-mockup-stack .mock:hover { transform: scale(1.03) !important; z-index: 10 !important; }
+.mock-bar { height: 28px; background: #1a1a1a; display: flex; align-items: center; padding: 0 10px; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.mock-bar .dot { width: 8px; height: 8px; border-radius: 50%; }
+.mock-bar .url { flex: 1; height: 14px; background: rgba(255,255,255,0.06); border-radius: 4px; margin: 0 8px; }
+.mock-content { padding: 12px; }
+.mock-hero-strip { height: 60px; border-radius: 4px; margin-bottom: 8px; display: flex; align-items: center; padding: 0 12px; }
+.mock-row { height: 8px; border-radius: 3px; background: rgba(255,255,255,0.06); margin-bottom: 6px; }
+
+/* ── SECTION COMMON ── */
+section { padding: 90px 5%; }
+.s-tag {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red);
+  display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+}
+.s-tag::before,.s-tag::after { content:''; flex: 0 0 28px; height: 1px; background: var(--red); }
+.s-title { font-family: 'Bebas Neue'; font-size: clamp(36px, 5vw, 62px); line-height: 0.97; letter-spacing: 1px; margin-bottom: 12px; }
+.s-sub { font-size: 16px; color: rgba(255,255,255,0.45); max-width: 560px; line-height: 1.75; font-weight: 300; margin-bottom: 50px; }
+.red { color: var(--red); }
+.divider { width: 56px; height: 3px; background: var(--red); margin: 16px 0; }
+
+/* ── WHY SECTION (with visual left) ── */
+#why { background: #000; }
+.why-layout { display: flex; align-items: center; gap: 80px; }
+.why-text { flex: 0 0 46%; }
+.why-text h2 { font-family: 'Bebas Neue'; font-size: clamp(34px, 4vw, 58px); line-height: 1; margin-bottom: 20px; }
+.why-text h2 span { color: var(--red); }
+.why-text .why-lead { font-weight: 700; font-size: 15px; margin-bottom: 14px; color: #fff; }
+.why-text p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 28px; font-weight: 300; }
+.why-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.why-visual { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.why-img-card {
+  background: var(--gray2); border: 1px solid var(--border); border-radius: 10px;
+  overflow: hidden; aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.why-img-card:hover { border-color: var(--border-red); transform: scale(1.03); }
+.why-img-card.tall { grid-row: span 2; aspect-ratio: auto; min-height: 200px; }
+
+/* ── FEATURES GRID ── */
+#features { background: var(--gray); }
+.features-header { text-align: center; }
+.features-header .s-tag { justify-content: center; }
+.features-header .s-sub { margin: 0 auto 50px; text-align: center; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.feat-card {
+  background: #000; border: 1px solid var(--border); border-radius: 10px;
+  padding: 36px 28px; text-align: center; position: relative; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, background 0.3s;
+}
+.feat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--red); transform:scaleX(0); transition:transform 0.3s; }
+.feat-card:hover::before { transform:scaleX(1); }
+.feat-card:hover { border-color: var(--border-red); transform: translateY(-4px); background: var(--gray2); }
+.feat-icon { font-size: 36px; margin-bottom: 18px; display: block; }
+.feat-card h4 { font-family: 'Barlow Condensed'; font-size: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.feat-card p { font-size: 14px; color: rgba(255,255,255,0.48); line-height: 1.7; font-weight: 300; }
+
+/* ── SHOWCASE BANNER ── */
+#showcase {
+  background: linear-gradient(135deg, #0a0000 0%, #000 50%, #1a0000 100%);
+  border-top: 1px solid var(--border-red); border-bottom: 1px solid var(--border-red);
+  padding: 70px 5%;
+  display: flex; align-items: center; justify-content: space-between; gap: 60px;
+  flex-wrap: wrap;
+}
+.showcase-text { max-width: 46%; }
+.showcase-text h2 { font-family: 'Bebas Neue'; font-size: clamp(34px, 4vw, 56px); margin-bottom: 16px; line-height: 1; }
+.showcase-text p { font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.75; font-weight: 300; margin-bottom: 28px; }
+.showcase-text .sh-phone { font-size: 16px; font-weight: 700; color: var(--red); margin-top: 14px; display: block; }
+.showcase-visual { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; min-width: 280px; }
+.sh-card {
+  background: var(--gray2); border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; padding: 16px; display: flex; align-items: center; justify-content: center;
+  aspect-ratio: 16/10; transition: border-color 0.3s, transform 0.3s;
+}
+.sh-card:hover { border-color: var(--border-red); transform: translateY(-4px); }
+.sh-card.wide { grid-column: span 2; aspect-ratio: 16/7; }
+
+/* ── PRICING ── */
+#pricing { background: #000; }
+.pricing-header { text-align: center; }
+.pricing-header .s-tag { justify-content: center; }
+.pricing-header .s-title { text-align: center; }
+.pricing-header .s-sub { margin: 0 auto 50px; text-align: center; }
+.pkg-tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
+.pkg-tab {
+  padding: 10px 26px; background: transparent; border: 1.5px solid var(--border);
+  color: rgba(255,255,255,0.5); font-weight: 700; font-size: 13px; letter-spacing: 1.5px;
+  text-transform: uppercase; cursor: pointer;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.25s;
+}
+.pkg-tab.active, .pkg-tab:hover { background: var(--red); color: #fff; border-color: var(--red); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.price-card {
+  background: var(--gray); border: 1px solid var(--border);
+  border-radius: 8px; overflow: hidden; position: relative;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+.price-card:hover { transform: translateY(-6px); border-color: var(--border-red); box-shadow: 0 20px 60px rgba(255,26,26,0.12); }
+.price-card.featured { border-color: var(--red); box-shadow: 0 0 40px rgba(255,26,26,0.15); }
+.price-card-head {
+  background: linear-gradient(135deg, #1a0000 0%, #2a0000 100%);
+  padding: 28px 28px 24px; position: relative; overflow: hidden;
+}
+.price-card.featured .price-card-head { background: linear-gradient(135deg, var(--red-dark) 0%, #800000 100%); }
+.price-card-head::before {
+  content:''; position:absolute; top:-40px; right:-40px; width:120px; height:120px;
+  background: rgba(255,26,26,0.08); border-radius:50%;
+}
+.price-badge { position:absolute; top:14px; right:14px; background:var(--red); color:#fff; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:4px 10px; border-radius:4px; }
+.price-name { font-family:'Barlow Condensed'; font-size:22px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:10px; }
+.price-amount { font-family:'Bebas Neue'; font-size:52px; line-height:1; color:#fff; display:block; }
+.price-old { font-size:13px; color:rgba(255,255,255,0.35); text-decoration:line-through; margin-top:4px; display:block; }
+.price-card-body { padding:28px; }
+.price-list { list-style:none; margin-bottom:28px; }
+.price-list li {
+  font-size:14px; color:rgba(255,255,255,0.65); padding:9px 0;
+  border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:10px;
+  line-height:1.4;
+}
+.price-list li::before { content:'✓'; color:var(--red); font-weight:700; flex-shrink:0; margin-top:1px; }
+.price-btns { display:flex; gap:10px; flex-wrap:wrap; }
+.price-btns .btn-primary { flex:1; justify-content:center; padding:12px 16px; font-size:12px; }
+.price-btns .btn-outline { flex:1; justify-content:center; padding:11px 16px; font-size:12px; }
+
+/* ── PORTFOLIO ── */
+#portfolio { background: var(--gray); }
+.pf-header { text-align:center; }
+.pf-header .s-tag { justify-content:center; }
+.pf-header .s-sub { margin:0 auto 50px; text-align:center; }
+.pf-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.pf-card {
+  background: var(--gray2); border: 1px solid var(--border);
+  border-radius:8px; overflow:hidden; aspect-ratio:16/10;
+  display:flex; align-items:center; justify-content:center;
+  position:relative; cursor:pointer;
+  transition:transform 0.3s, border-color 0.3s;
+}
+.pf-card:hover { transform:scale(1.03); border-color:var(--border-red); }
+.pf-card .pf-overlay {
+  position:absolute; inset:0; background:rgba(255,26,26,0.88);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  opacity:0; transition:opacity 0.3s;
+}
+.pf-card:hover .pf-overlay { opacity:1; }
+.pf-overlay p { font-size:12px; color:#fff; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+.pf-card.wide { grid-column:span 2; aspect-ratio:32/10; }
+.pf-inner { width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:16px; }
+
+/* ── PROCESS ── */
+#process { background: #000; }
+.process-header { text-align:center; }
+.process-header .s-tag { justify-content:center; }
+.process-header .s-sub { margin:0 auto 50px; text-align:center; }
+.process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.process-card {
+  background: linear-gradient(145deg, #1a0000, #0d0000);
+  border: 1px solid var(--border-red); border-radius:10px; padding:36px 28px;
+  position:relative; overflow:hidden; transition:transform 0.3s, box-shadow 0.3s;
+}
+.process-card:hover { transform:translateY(-5px); box-shadow:0 20px 50px rgba(255,26,26,0.12); }
+.process-num { position:absolute; top:16px; right:20px; font-family:'Bebas Neue'; font-size:80px; line-height:1; color:rgba(255,26,26,0.08); }
+.process-icon { font-size:36px; margin-bottom:20px; display:block; }
+.process-card h4 { font-family:'Barlow Condensed'; font-size:22px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; color:#fff; }
+.process-card p { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.75; font-weight:300; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: linear-gradient(135deg, #0a0000, #000); border-top:1px solid var(--border-red); border-bottom:1px solid var(--border-red); }
+.testi-header { text-align:center; margin-bottom:50px; }
+.testi-header .s-tag { justify-content:center; }
+.testi-header h2 { font-family:'Bebas Neue'; font-size:clamp(34px,4vw,58px); }
+.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.testi-card {
+  background: var(--gray2); border: 1px solid var(--border);
+  border-radius:10px; padding:28px; position:relative;
+  transition:border-color 0.3s, transform 0.3s;
+}
+.testi-card:hover { border-color:var(--border-red); transform:translateY(-4px); }
+.testi-card-head { display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.testi-avatar { width:44px; height:44px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; flex-shrink:0; }
+.testi-name { font-weight:700; font-size:15px; display:block; }
+.testi-handle { font-size:12px; color:rgba(255,255,255,0.4); display:block; }
+.testi-g { width:20px; height:20px; margin-left:auto; flex-shrink:0; }
+.testi-stars { color:var(--red); font-size:14px; margin-bottom:10px; letter-spacing:2px; }
+.testi-text { font-size:14px; color:rgba(255,255,255,0.6); line-height:1.75; font-style:italic; font-weight:300; }
+
+/* ── CONTACT ── */
+#contact { background: var(--gray); }
+.contact-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:70px; align-items:start; }
+.contact-left h2 { font-family:'Bebas Neue'; font-size:clamp(34px,4vw,56px); margin-bottom:10px; }
+.contact-left h2 span { color:var(--red); }
+.contact-left p { font-size:15px; color:rgba(255,255,255,0.5); line-height:1.75; font-weight:300; margin-bottom:28px; }
+.c-form-card { background:#000; border:1px solid var(--border); border-radius:10px; padding:36px; }
+.c-form-card h3 { font-family:'Bebas Neue'; font-size:30px; margin-bottom:24px; }
+.f-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.f-group { margin-bottom:16px; }
+.f-group label { font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.45); display:block; margin-bottom:7px; }
+.f-group input, .f-group select, .f-group textarea {
+  width:100%; background:var(--gray2); border:1px solid var(--border); border-radius:6px;
+  color:#fff; font-family:'Barlow'; font-size:14px; padding:12px 14px;
+  outline:none; transition:border-color 0.25s;
+  -webkit-appearance:none; appearance:none;
+}
+.f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color:var(--red); }
+.f-group textarea { resize:vertical; min-height:110px; }
+.f-group select option { background:#111; }
+.submit-btn {
+  width:100%; background:var(--red); color:#fff; border:none; border-radius:6px;
+  padding:14px; font-family:'Barlow'; font-weight:700; font-size:14px;
+  letter-spacing:2px; text-transform:uppercase; cursor:pointer;
+  transition:background 0.2s, transform 0.2s; box-shadow:0 0 24px rgba(255,26,26,0.3);
+}
+.submit-btn:hover { background:var(--red-dark); transform:translateY(-2px); }
+.form-success { display:none; text-align:center; padding:12px; margin-top:12px; background:rgba(255,26,26,0.1); border:1px solid var(--border-red); border-radius:6px; color:#fff; font-size:14px; }
+
+/* ── CTA BANNER ── */
+#cta-banner {
+  background: linear-gradient(135deg, #1a0000 0%, #0d0000 50%, #1a0000 100%);
+  border-top: 1px solid var(--border-red); border-bottom: 1px solid var(--border-red);
+  padding: 70px 5%;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  flex-wrap: wrap;
+}
+.cta-text h2 { font-family:'Bebas Neue'; font-size:clamp(34px,4vw,56px); margin-bottom:10px; }
+.cta-text p { font-size:15px; color:rgba(255,255,255,0.5); font-weight:300; }
+.cta-text .cta-phone { font-size:16px; font-weight:700; color:var(--red); margin-top:14px; display:block; }
+.cta-actions { display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+
+/* ── FOOTER ── */
+footer { background:#000; border-top:1px solid var(--border); padding:60px 5% 30px; }
+.footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1.4fr; gap:50px; margin-bottom:40px; }
+.f-brand p { font-size:14px; color:rgba(255,255,255,0.4); line-height:1.75; margin-top:14px; font-weight:300; }
+.f-social { display:flex; gap:10px; margin-top:18px; }
+.f-social a {
+  width:36px; height:36px; border:1px solid var(--border); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,0.5); font-size:13px; text-decoration:none; font-weight:700;
+  transition:border-color 0.25s, color 0.25s, background 0.25s;
+}
+.f-social a:hover { border-color:var(--red); color:#fff; background:var(--red); }
+.f-col h5 { font-family:'Barlow Condensed'; font-size:16px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; color:#fff; }
+.f-col ul { list-style:none; }
+.f-col ul li { margin-bottom:10px; }
+.f-col ul li a { font-size:14px; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s; font-weight:300; }
+.f-col ul li a:hover { color:var(--red); }
+.f-col .f-row2 { font-size:14px; color:rgba(255,255,255,0.45); margin-bottom:10px; display:flex; gap:10px; align-items:flex-start; font-weight:300; }
+.f-col .f-row2 span { color:var(--red); flex-shrink:0; }
+.footer-bottom { border-top:1px solid var(--border); padding-top:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
+.footer-bottom p { font-size:13px; color:rgba(255,255,255,0.3); }
+.footer-bottom .fl a { font-size:13px; color:rgba(255,255,255,0.35); text-decoration:none; margin-left:16px; transition:color 0.2s; }
+.footer-bottom .fl a:hover { color:var(--red); }
+
+/* ── WA FLOAT ── */
+#wa-float {
+  position:fixed; bottom:26px; left:26px; z-index:9999;
+  width:56px; height:56px; border-radius:50%; background:#25D366;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 24px rgba(37,211,102,0.45);
+  text-decoration:none; animation:wa-pulse 2.5s infinite;
+}
+@keyframes wa-pulse { 0%,100% { box-shadow:0 4px 24px rgba(37,211,102,0.45),0 0 0 0 rgba(37,211,102,0.4); } 60% { box-shadow:0 4px 24px rgba(37,211,102,0.45),0 0 0 14px rgba(37,211,102,0); } }
+#wa-float svg { width:30px; height:30px; }
+
+/* ── MOBILE ── */
+@media (max-width: 1024px) {
+  .hero-visual { display:none; }
+  .hero-content { max-width:100%; }
+  .why-layout { flex-direction:column; }
+  .why-visual { width:100%; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
+  .pf-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; gap:30px; }
+  .showcase-text { max-width: 100%; }
+  #showcase { flex-direction: column; }
+}
+@media (max-width: 768px) {
+  section { padding: 60px 5%; }
+  .nav-links { display:none; flex-direction:column; gap:0; position:absolute; top:70px; left:0; right:0; background:rgba(0,0,0,0.98); border-bottom:1px solid var(--border-red); padding:20px 5%; }
+  .nav-links.open { display:flex; }
+  .nav-links a { font-size:15px; padding:12px 0; border-bottom:1px solid var(--border); }
+  .hamburger { display:flex; }
+  .nav-cta { display:none; }
+  .features-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns:1fr; }
+  .price-card.featured { order:-1; }
+  .pf-grid { grid-template-columns:1fr; }
+  .pf-card.wide { grid-column:span 1; aspect-ratio:16/10; }
+  .process-grid { grid-template-columns:1fr; }
+  .testi-grid { grid-template-columns:1fr; }
+  .contact-layout { grid-template-columns:1fr; gap:40px; }
+  .footer-top { grid-template-columns:1fr; gap:30px; }
+  #cta-banner { flex-direction:column; text-align:center; }
+  .f-row { grid-template-columns:1fr; }
+  .hero-stats { gap:20px; }
+  .hero-stat + .hero-stat { border-left:none; border-top:1px solid var(--border); padding-left:0; padding-top:20px; }
+  .showcase-visual { grid-template-columns: 1fr; }
+  .sh-card.wide { grid-column:span 1; aspect-ratio:16/10; }
+}
+@media (max-width: 480px) {
+  .pf-grid { grid-template-columns:1fr; }
+  #topbar { justify-content:center; text-align:center; }
+  .tb-right { justify-content:center; }
+}
+
+/* fade in animation */
+.reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div id="topbar">
+  <span>Need help? Get Live Chat Support &nbsp; 📞 <a href="tel:+923362099094">+92 336 2099094</a></span>
+  <div class="tb-right">
+    <span>Talk with our Expert</span>
+    <a href="https://wa.me/923362099094" target="_blank" rel="noopener">💬 Live Chat</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#hero" class="nav-logo">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="48" r="36" stroke="#FF1A1A" stroke-width="1.5" opacity="0.35"/>
+      <circle cx="50" cy="48" r="28" stroke="#fff" stroke-width="1" opacity="0.1" stroke-dasharray="3 3"/>
+      <path d="M33 30h20c9 0 14 4.5 14 12s-5 12-14 12H42v14H33V30z M42 46h10c5 0 7.5-1.8 7.5-4.5S57 37 52 37H42v9z" fill="white"/>
+      <path d="M45 64L53 47L61 64" fill="#FF1A1A"/>
+    </svg>
+    <div class="nav-logo-text">
+      <span class="prime">PRIME</span>
+      <span class="vortex">VORTEX</span>
+    </div>
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li class="has-drop"><a href="#features">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#pricing">Packages</a></li>
+    <li><a href="#contact">Contact Us</a></li>
+  </ul>
+  <a href="https://wa.me/923362099094" target="_blank" rel="noopener" class="nav-cta">Get Started</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><div class="hero-badge-dot"></div>Web Design & Development</div>
+      <h1 class="hero-headline">
+        Achieve Success With<br>
+        <span class="hl">Exceptional Website Designs</span>
+      </h1>
+      <p class="hero-sub">Our team at PrimeVortex blends stunning website designs with expert development skills to deliver customized, powerful web solutions. As a leading web development company, we focus on meeting the unique needs of our clients while ensuring a seamless online experience.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">▶ Start Your Project</a>
+        <a href="#portfolio" class="btn-outline">View Portfolio →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hero-stat-num">50+</span><span class="hero-stat-label">Websites Built</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">30+</span><span class="hero-stat-label">Happy Clients</span></div>
+        <div class="hero-stat"><span class="hero-stat-num">48hr</span><span class="hero-stat-label">Fast Turnaround</span></div>
+      </div>
+    </div>
+    <!-- Hero Visual: Web Mockup Stack -->
+    <div class="hero-visual">
+      <div class="web-mockup-stack">
+        <!-- Back mockup -->
+        <div class="mock" style="width:72%;top:0;right:0;z-index:1;transform:rotate(4deg)">
+          <div class="mock-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#febc2e"></div><div class="dot" style="background:#28c840"></div><div class="url"></div></div>
+          <div class="mock-content" style="background:#0d0000;padding:14px">
+            <div class="mock-hero-strip" style="background:linear-gradient(90deg,#FF1A1A,#800000)">
+              <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;color:#fff">WEB DEVELOPMENT SERVICE PROVIDER</span>
+            </div>
+            <div class="mock-row" style="width:80%"></div>
+            <div class="mock-row" style="width:60%"></div>
+          </div>
+        </div>
+        <!-- Middle mockup -->
+        <div class="mock" style="width:78%;top:30px;left:0;z-index:2;transform:rotate(-3deg)">
+          <div class="mock-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#febc2e"></div><div class="dot" style="background:#28c840"></div><div class="url"></div></div>
+          <div class="mock-content" style="background:#161616;padding:14px">
+            <div class="mock-hero-strip" style="background:#1a0000;border:1px solid rgba(255,26,26,0.3);border-radius:4px">
+              <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:#FF1A1A">PRIMEVORTEX</span>
+            </div>
+            <div class="mock-row" style="width:90%"></div>
+            <div class="mock-row" style="width:70%"></div>
+            <div class="mock-row" style="width:50%"></div>
+          </div>
+        </div>
+        <!-- Front main mockup -->
+        <div class="mock" style="width:82%;bottom:0;left:50%;transform:translateX(-50%);z-index:3">
+          <div class="mock-bar"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#febc2e"></div><div class="dot" style="background:#28c840"></div><div class="url" style="background:rgba(255,26,26,0.15)"></div></div>
+          <div class="mock-content" style="background:#0a0a0a;padding:16px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+              <div style="background:linear-gradient(135deg,#1a0000,#2a0000);border-radius:4px;padding:12px;text-align:center;border:1px solid rgba(255,26,26,0.2)">
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;color:#FF1A1A;letter-spacing:1px">WE BUILD</div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;color:rgba(255,255,255,0.5)">Modern Websites</div>
+              </div>
+              <div style="background:var(--gray2);border-radius:4px;padding:12px;border:1px solid var(--border)">
+                <div class="mock-row" style="width:100%;margin-bottom:4px"></div>
+                <div class="mock-row" style="width:80%"></div>
+              </div>
+            </div>
+            <div class="mock-row" style="width:100%"></div>
+            <div class="mock-row" style="width:85%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE (Engaging & Customized section like Image 2) -->
+<section id="why">
+  <div class="why-layout">
+    <div class="why-text reveal">
+      <div class="s-tag">Why PrimeVortex</div>
+      <h2>Engaging And Customized <span>Website Design Services</span> For Professional Websites</h2>
+      <div class="divider"></div>
+      <p class="why-lead">Because great design drives real business results.</p>
+      <p>At PrimeVortex, a professional web design company, we prioritize creativity in our web design and development process. Our seasoned team of designers and developers brings years of experience, resulting in dynamic, custom websites tailored to meet your specific goals. We believe that effective custom web design goes beyond aesthetics — it's about creating a user-friendly experience that drives results.</p>
+      <div class="why-btns">
+        <a href="#contact" class="btn-primary">Discuss More</a>
+        <a href="https://wa.me/923362099094" target="_blank" rel="noopener" class="btn-outline">Live Chat</a>
+      </div>
+    </div>
+    <div class="why-visual reveal">
+      <div class="why-img-card tall">
+        <div style="width:100%;height:100%;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:12px">
+          <div style="background:linear-gradient(135deg,#1a0000,#0a0000);border:1px solid rgba(255,26,26,0.3);border-radius:6px;padding:14px">
+            <div style="height:8px;background:rgba(255,26,26,0.3);border-radius:3px;margin-bottom:6px;width:80%"></div>
+            <div style="height:8px;background:rgba(255,255,255,0.06);border-radius:3px;width:60%"></div>
+          </div>
+          <div style="background:var(--gray2);border-radius:6px;padding:14px;border:1px solid var(--border)">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+              <div style="height:30px;background:rgba(255,26,26,0.1);border-radius:4px;display:flex;align-items:center;justify-content:center"><span style="font-size:10px;color:#FF1A1A;font-weight:700">PAGE</span></div>
+              <div style="height:30px;background:rgba(255,255,255,0.04);border-radius:4px"></div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px">PV</div>
+            <div>
+              <div style="height:8px;background:rgba(255,255,255,0.15);border-radius:3px;width:80px;margin-bottom:4px"></div>
+              <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;width:60px"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-img-card">
+        <div style="padding:16px;text-align:center;width:100%">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#FF1A1A;letter-spacing:2px">RESPONSIVE</div>
+          <div style="display:flex;justify-content:center;gap:8px;margin-top:10px">
+            <div style="width:28px;height:48px;border:1px solid rgba(255,26,26,0.4);border-radius:4px;background:rgba(255,26,26,0.05)"></div>
+            <div style="width:44px;height:36px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;background:var(--gray2)"></div>
+            <div style="width:60px;height:40px;border:1px solid rgba(255,255,255,0.1);border-radius:4px;background:var(--gray2)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-img-card">
+        <div style="padding:14px;width:100%">
+          <div style="font-size:11px;color:#FF1A1A;font-weight:700;letter-spacing:2px;margin-bottom:10px">WE'RE PROFESSIONAL</div>
+          <div style="height:6px;background:rgba(255,26,26,0.3);border-radius:3px;margin-bottom:4px"></div>
+          <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;width:70%;margin-bottom:4px"></div>
+          <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;width:50%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES (Why Choose section like Image 6) -->
+<section id="features">
+  <div class="features-header reveal">
+    <div class="s-tag">Our Advantage</div>
+    <h2 class="s-title">Why Choose <span class="red">PrimeVortex</span> For Custom Web Designs?</h2>
+    <p class="s-sub">We offer high-quality web development services and create websites that help you establish a strong brand presence in the market.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card reveal">
+      <span class="feat-icon">🎨</span>
+      <h4>Sleek Design</h4>
+      <p>Our Website Design Agency delivers professional website designs with corporate and user-friendly features to make your brand stand out.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">🔒</span>
+      <h4>Robust SSL Security</h4>
+      <p>We ensure high-quality security standards with strong SSL trust factors to attract more clients and protect user data.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">⚡</span>
+      <h4>Fastest Turnaround</h4>
+      <p>Our expert Website Designers can deliver your initial draft within 1 to 2 weeks of your order placement.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">📈</span>
+      <h4>SEO Optimized</h4>
+      <p>Our websites are fully optimized to help you rank at the top and drive organic traffic to your business.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">🎁</span>
+      <h4>Free Features</h4>
+      <p>Enjoy our free giveaways, including a Google AdWords voucher, hosting plans, and a domain for one year.</p>
+    </div>
+    <div class="feat-card reveal">
+      <span class="feat-icon">🛠️</span>
+      <h4>Fully Customized</h4>
+      <p>We don't use templates. Our Website Developers design websites from scratch to achieve perfection for your brand.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE BANNER (Showcasing Your Brand section like Image 5) -->
+<div id="showcase">
+  <div class="showcase-text reveal">
+    <div class="s-tag" style="margin-bottom:16px">Brand Showcase</div>
+    <h2>Showcasing Your Brand with <span class="red">Strong Web Designs</span></h2>
+    <p>We are the best web development agency, and our talented designers are dedicated to helping you increase your revenue with a stunning website that represents your brand's identity perfectly.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
+      <a href="#contact" class="btn-primary">Discuss More</a>
+      <a href="https://wa.me/923362099094" target="_blank" rel="noopener" class="btn-outline">Live Chat</a>
+    </div>
+    <span class="sh-phone">📞 Speak with an Expert: +92 336 2099094</span>
+  </div>
+  <div class="showcase-visual reveal">
+    <div class="sh-card wide">
+      <div style="text-align:center;padding:16px">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#FF1A1A;letter-spacing:3px">PRIMEVORTEX</div>
+        <div style="display:flex;gap:8px;margin-top:10px;justify-content:center;align-items:flex-end">
+          <div style="width:50px;height:70px;background:linear-gradient(180deg,#1a0000,#0a0000);border:1px solid rgba(255,26,26,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center"><span style="font-size:9px;color:#FF1A1A;font-weight:700;writing-mode:vertical-rl">MOBILE</span></div>
+          <div style="width:90px;height:55px;background:var(--gray2);border:1px solid var(--border);border-radius:4px"></div>
+          <div style="width:70px;height:65px;background:var(--gray2);border:1px solid var(--border);border-radius:4px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="sh-card">
+      <div style="text-align:center">
+        <div style="width:48px;height:48px;border-radius:50%;background:rgba(255,26,26,0.1);border:1px solid rgba(255,26,26,0.4);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:#FF1A1A;font-size:18px">PV</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:1px">UNIQUE DESIGN</div>
+      </div>
+    </div>
+    <div class="sh-card">
+      <div style="padding:12px;width:100%">
+        <div style="height:6px;background:rgba(255,26,26,0.3);border-radius:3px;margin-bottom:5px"></div>
+        <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;width:80%;margin-bottom:5px"></div>
+        <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:3px;width:60%"></div>
+        <div style="margin-top:10px;display:flex;gap:6px">
+          <div style="height:20px;flex:1;background:rgba(255,26,26,0.15);border-radius:3px"></div>
+          <div style="height:20px;flex:1;background:rgba(255,255,255,0.04);border-radius:3px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING (Flexible Pricing section like Image 4) -->
+<section id="pricing">
+  <div class="pricing-header reveal">
+    <div class="s-tag">Packages</div>
+    <h2 class="s-title">Flexible <span class="red">Pricing</span> Plans For Your Needs</h2>
+    <p class="s-sub">Our web design company provides a variety of affordable packages tailored to meet your business requirements and support your growth.</p>
+  </div>
+  <div class="pkg-tabs" id="pkg-tabs">
+    <button class="pkg-tab active" data-cat="website">Website Design</button>
+    <button class="pkg-tab" data-cat="logo">Logo Design</button>
+    <button class="pkg-tab" data-cat="mobile">Mobile App</button>
+  </div>
+  <div class="pricing-grid" id="pricing-grid">
+    <!-- cards injected by JS -->
+  </div>
+</section>
+
+<!-- PORTFOLIO (Innovative Portfolio section like Image 3) -->
+<section id="portfolio">
+  <div class="pf-header reveal">
+    <div class="s-tag">Our Work</div>
+    <h2 class="s-title">Innovative <span class="red">Portfolio</span> Creations</h2>
+    <p class="s-sub">At PrimeVortex, we take pride in offering top-tier website design services. Our portfolio reflects the creativity and expertise we've dedicated to each project, helping businesses stand out in their industry.</p>
+  </div>
+  <div class="pf-grid">
+    <div class="pf-card wide" style="background:linear-gradient(135deg,#1a0000,#000)">
+      <div class="pf-inner">
+        <div style="text-align:center">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#FF1A1A;letter-spacing:4px">DIGITAL AGENCY</div>
+          <div style="height:1px;background:rgba(255,26,26,0.4);margin:8px 0"></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:3px">WEB DEVELOPMENT SERVICE PROVIDER</div>
+          <div style="display:flex;gap:8px;margin-top:12px;justify-content:center">
+            <div style="height:28px;width:80px;background:rgba(255,26,26,0.2);border:1px solid rgba(255,26,26,0.4);border-radius:3px"></div>
+            <div style="height:28px;width:80px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:3px"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pf-overlay"><p>Full Brand Redesign</p><p style="font-size:18px;font-weight:900;letter-spacing:2px">NovaCorp Digital</p></div>
+    </div>
+    <div class="pf-card" style="background:#0a0a1a">
+      <div class="pf-inner">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:900;color:#FF1A1A;letter-spacing:3px">FUTURE</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#fff;letter-spacing:2px">TECH</div>
+          <div style="width:30px;height:2px;background:#FF1A1A;margin:4px auto"></div>
+        </div>
+      </div>
+      <div class="pf-overlay"><p>E-Commerce Website</p><p style="font-size:16px;font-weight:900">FutureTech</p></div>
+    </div>
+    <div class="pf-card" style="background:#001a0a">
+      <div class="pf-inner">
+        <div style="text-align:center">
+          <div style="width:50px;height:50px;background:rgba(255,26,26,0.1);border:2px solid #FF1A1A;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:'Barlow Condensed',sans-serif;font-weight:900;color:#FF1A1A;font-size:18px">H+</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:1px">HEALTH PORTAL</div>
+        </div>
+      </div>
+      <div class="pf-overlay"><p>Healthcare Website</p><p style="font-size:16px;font-weight:900">HealthSync</p></div>
+    </div>
+    <div class="pf-card" style="background:#1a1a00">
+      <div class="pf-inner">
+        <div style="text-align:center">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#FF1A1A;letter-spacing:3px">LUXE</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px">E-COMMERCE STORE</div>
+        </div>
+      </div>
+      <div class="pf-overlay"><p>Online Store</p><p style="font-size:16px;font-weight:900">LuxeStyle</p></div>
+    </div>
+    <div class="pf-card" style="background:#0d0014">
+      <div class="pf-inner">
+        <div style="text-align:center">
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none"><polygon points="25,4 46,42 4,42" stroke="#FF1A1A" stroke-width="1.5" fill="rgba(255,26,26,0.06)"/><text x="25" y="36" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="10" fill="white" letter-spacing="1">APEX</text></svg>
+          <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1px;margin-top:4px">CORP WEBSITE</div>
+        </div>
+      </div>
+      <div class="pf-overlay"><p>Corporate Website</p><p style="font-size:16px;font-weight:900">Apex Corp</p></div>
+    </div>
+    <div class="pf-card" style="background:#00100a">
+      <div class="pf-inner">
+        <div style="text-align:center">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:900;color:#FF1A1A;letter-spacing:3px">MONEY</div>
+          <div style="width:36px;height:2px;background:#FF1A1A;margin:5px auto"></div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:2px">FINANCE APP</div>
+        </div>
+      </div>
+      <div class="pf-overlay"><p>Finance Platform</p><p style="font-size:16px;font-weight:900">MoneyMine</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div id="cta-banner">
+  <div class="cta-text reveal">
+    <h2>Top Website Design Agency at <span class="red">Your Service</span></h2>
+    <p>Hire PrimeVortex and get the best digital solutions for your business.</p>
+    <span class="cta-phone">📞 Or Speak with an Expert: +92 336 2099094</span>
+  </div>
+  <div class="cta-actions reveal">
+    <a href="#contact" class="btn-primary">Discuss More</a>
+    <a href="https://wa.me/923362099094" target="_blank" rel="noopener" class="btn-outline">Live Chat</a>
+  </div>
+</div>
+
+<!-- PROCESS (3 Steps section like Image 7) -->
+<section id="process">
+  <div class="process-header reveal">
+    <div class="s-tag">How It Works</div>
+    <h2 class="s-title">Impeccable <span class="red">Designs</span> For You,<br>In Just 3 Steps!</h2>
+    <p class="s-sub">Providing your business with the best of the best designs in just 3 steps.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-card reveal">
+      <span class="process-num">01</span>
+      <span class="process-icon">📋</span>
+      <h4>Consultation</h4>
+      <p>We gather important details of your business, such as values, mission, and target audience. This info helps our expert web designers understand your brand and create a design that is best suited to it.</p>
+    </div>
+    <div class="process-card reveal">
+      <span class="process-num">02</span>
+      <span class="process-icon">🔄</span>
+      <h4>Feedback and Revision</h4>
+      <p>After the first version is done, we will share it with you for feedback. You can request revisions until you are happy with the outcome and satisfied with the final design. The number of revisions can change depending upon our policies.</p>
+    </div>
+    <div class="process-card reveal">
+      <span class="process-num">03</span>
+      <span class="process-icon">🚀</span>
+      <h4>Handing it Over</h4>
+      <p>When you approve the final design, we will deploy your website fully, give you all necessary credentials and files, and provide training on how to manage it yourself. Your site will be live and ready to grow your business.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS (Happy Clients section like Image 8) -->
+<section id="testimonials">
+  <div class="testi-header reveal">
+    <div class="s-tag">Client Feedback</div>
+    <h2>Happy Clients, <span class="red">Every Time!</span></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-card-head">
+        <div class="testi-avatar">MT</div>
+        <div>
+          <span class="testi-name">Mark Taylor</span>
+          <span class="testi-handle">@Marktaylor</span>
+        </div>
+        <svg class="testi-g" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"PrimeVortex is a great company to work with. I got my website done quickly, and it was exactly what I wanted. I'd recommend them to anyone in my network. I'm excited to keep growing my business with their help."</p>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-card-head">
+        <div class="testi-avatar" style="background:#800000">SC</div>
+        <div>
+          <span class="testi-name">Stacy</span>
+          <span class="testi-handle">@stacy</span>
+        </div>
+        <svg class="testi-g" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Good morning! I want to say that the team at PrimeVortex did a wonderful job creating my website. They also provided clear instructions on how to manage it myself. I'm grateful to them and recommend their services."</p>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-card-head">
+        <div class="testi-avatar" style="background:#4a0000">MJ</div>
+        <div>
+          <span class="testi-name">Mike Johnson</span>
+          <span class="testi-handle">@mikejohnson</span>
+        </div>
+        <svg class="testi-g" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"I had a project done by PrimeVortex and it was a great experience. We are thrilled with the website they created for us. Thank you for being responsive and responsible. Keep up the excellent work, and you'll keep climbing higher."</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (Start Your Project section like Image 9) -->
+<section id="contact">
+  <div class="contact-layout">
+    <div class="contact-left reveal">
+      <div class="s-tag">Get In Touch</div>
+      <h2>Start Your Project <span>with Us</span></h2>
+      <div class="divider"></div>
+      <p>Like any smart company we know and understand the value of clear communication. Open communication is very important between our team and clients. If you want to discuss a new project, or ask a question, or share feedback, we're here and happy to listen to you.</p>
+      <p>We are based in PECHS, Karachi and work with clients across Pakistan and beyond. We typically respond within 24 hours.</p>
+      <p>📞 <strong style="color:var(--red)">+92 336 2099094</strong></p>
+      <p>✉ <strong style="color:var(--red)">Primevortex1472@gmail.com</strong></p>
+      <p>📍 Tariq Center #201, 2nd Floor, Main Tariq Road, PECHS, Karachi</p>
+    </div>
+    <div class="c-form-card reveal">
+      <h3>Send Us A <span class="red">Message</span></h3>
+      <form id="contact-form" novalidate>
+        <div class="f-row">
+          <div class="f-group"><label>First Name</label><input type="text" id="fname" placeholder="John"></div>
+          <div class="f-group"><label>Last Name</label><input type="text" id="lname" placeholder="Doe"></div>
+        </div>
+        <div class="f-group"><label>Email Address</label><input type="email" id="femail" placeholder="john@company.com"></div>
+        <div class="f-group"><label>Phone Number</label><input type="tel" id="fphone" placeholder="+92 300 0000000"></div>
+        <div class="f-group">
+          <label>Service Required</label>
+          <select id="fservice">
+            <option value="">Select a service...</option>
+            <option>Website Design & Development</option>
+            <option>Logo Design & Branding</option>
+            <option>Mobile App Development</option>
+            <option>Complete Digital Package</option>
+          </select>
+        </div>
+        <div class="f-group"><label>Project Details</label><textarea id="fmessage" placeholder="Tell us about your project..."></textarea></div>
+        <button class="submit-btn" type="submit">Send Message ▶</button>
+        <div class="form-success" id="form-success">✓ Message sent! We'll get back to you within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="f-brand">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <svg width="42" height="42" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="48" r="36" stroke="#FF1A1A" stroke-width="1.5" opacity="0.4"/>
+          <path d="M33 30h20c9 0 14 4.5 14 12s-5 12-14 12H42v14H33V30z M42 46h10c5 0 7.5-1.8 7.5-4.5S57 37 52 37H42v9z" fill="white"/>
+          <path d="M45 64L53 47L61 64" fill="#FF1A1A"/>
+        </svg>
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:3px;color:#fff">PRIME</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:20px;letter-spacing:3px;color:#FF1A1A;line-height:0.85">VORTEX</div>
+        </div>
+      </div>
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px">BUILDING SOLUTIONS. <span style="color:#FF1A1A">POWERING FUTURES.</span></p>
+      <p>Karachi's premier digital agency specializing in Logo Design, Website Development, and Mobile Applications.</p>
+      <div class="f-social">
+        <a href="#">𝕏</a><a href="#">in</a><a href="#">fb</a><a href="#">ig</a>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#pricing">Website Design</a></li>
+        <li><a href="#pricing">Logo Design</a></li>
+        <li><a href="#pricing">Mobile Applications</a></li>
+        <li><a href="#pricing">Brand Strategy</a></li>
+        <li><a href="#pricing">UI/UX Design</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#why">About Us</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>Contact</h5>
+      <p class="f-row2"><span>📞</span> +92 336 2099094</p>
+      <p class="f-row2"><span>✉</span> Primevortex1472@gmail.com</p>
+      <p class="f-row2"><span>🌐</span> www.primevortex.co</p>
+      <p class="f-row2"><span>📍</span> Tariq Center #201, PECHS, Karachi</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span style="color:#FF1A1A">PrimeVortex</span>. All Rights Reserved.</p>
+    <p>Designed with passion in <span style="color:#FF1A1A">Karachi, Pakistan</span></p>
+    <div class="fl">
+      <a href="PrivacyPolicy.html">Privacy Policy</a>
+      <a href="RefundPolicy.html">Refund Policy</a>
+      <a href="Terms&Conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a id="wa-float" href="https://wa.me/923362099094?text=Hey%20there!%20I%27d%20like%20to%20discuss%20a%20website%20project%20with%20PrimeVortex." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="16" cy="16" r="16" fill="#25D366"/>
+    <path d="M23.5 8.5A10.4 10.4 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.85.49 3.65 1.41 5.24L5.5 26.5l5.4-1.4A10.42 10.42 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5z" fill="white"/>
+    <path d="M21.3 18.7c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07a8.18 8.18 0 0 1-2.4-1.48 9.01 9.01 0 0 1-1.66-2.07c-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.91-2.19-.24-.57-.48-.5-.67-.5-.17 0-.37-.03-.57-.03s-.52.08-.8.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.24-.7.24-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25D366"/>
+  </svg>
+</a>
+
+<script>
+/* ── GEO PRICING ── */
+const prices = {
+  PK: {
+    currency:"PKR",
+    logo: ["₨15,000","₨25,000","₨45,000"], oldLogo: ["₨30,000","₨50,000","₨90,000"],
+    website: ["₨50,000","₨85,000","₨150,000"], oldWebsite: ["₨100,000","₨170,000","₨300,000"],
+    mobile: ["₨150,000","₨250,000","₨500,000"], oldMobile: ["₨300,000","₨500,000","₨1,000,000"]
+  },
+  US: {
+    currency:"USD",
+    logo:["$99","$199","$299"], oldLogo:["$198","$398","$598"],
+    website:["$399","$799","$1,499"], oldWebsite:["$798","$1,598","$2,998"],
+    mobile:["$1,499","$2,499","$4,999"], oldMobile:["$2,998","$4,998","$9,998"]
+  },
+  GB: {
+    currency:"GBP",
+    logo:["£79","£159","£239"], oldLogo:["£158","£318","£478"],
+    website:["£320","£640","£1,200"], oldWebsite:["£640","£1,280","£2,400"],
+    mobile:["£1,200","£2,000","£4,000"], oldMobile:["£2,400","£4,000","£8,000"]
+  },
+  CA: {
+    currency:"CAD",
+    logo:["C$129","C$249","C$379"], oldLogo:["C$258","C$498","C$758"],
+    website:["C$499","C$999","C$1,899"], oldWebsite:["C$998","C$1,998","C$3,798"],
+    mobile:["C$1,899","C$2,999","C$5,999"], oldMobile:["C$3,798","C$5,998","C$11,998"]
+  },
+  AU: {
+    currency:"AUD",
+    logo:["A$119","A$229","A$349"], oldLogo:["A$238","A$458","A$698"],
+    website:["A$459","A$899","A$1,799"], oldWebsite:["A$918","A$1,798","A$3,598"],
+    mobile:["A$1,799","A$2,899","A$5,799"], oldMobile:["A$3,598","A$5,798","A$11,598"]
+  },
+  SA: {
+    currency:"SAR",
+    logo:["﷼375","﷼750","﷼1,125"], oldLogo:["﷼750","﷼1,500","﷼2,250"],
+    website:["﷼1,500","﷼3,000","﷼5,600"], oldWebsite:["﷼3,000","﷼6,000","﷼11,200"],
+    mobile:["﷼5,600","﷼9,400","﷼18,700"], oldMobile:["﷼11,200","﷼18,800","﷼37,400"]
+  }
+};
+
+const plans = {
+  logo: [
+    { name:"Logo Basic", badge:null, features:["2 Original Logo Concepts","2 Dedicated Logo Designers","2 Revisions","With Grey Scale Format","Free Icon Design","Formats: JPEG Only","24 – 48 Hours Turn Around Time","100% Satisfaction Guarantee"] },
+    { name:"Logo Plus", badge:"Most Popular", features:["8 Original Logo Concepts","4 Dedicated Logo Designers","Unlimited Revisions","Stationery Design (Business Card, Letterhead)","Email Signature Design","With Grey Scale Format","Free Icon Design","100% Satisfaction Guarantee"] },
+    { name:"Logo Infinity", badge:"Best Value", features:["Unlimited Original Logo Concepts","8 Dedicated Logo Designers","Unlimited Revisions","Stationery Design (Business Card, Letterhead, Envelope)","Email Signature Design","Social Media Designs (Facebook, Twitter, Instagram)","Free Icon Design","100% Satisfaction Guarantee"] }
+  ],
+  website: [
+    { name:"Economy Package", badge:null, features:["2 Stock Images","3 Page Website","1 jQuery Slider Banner","Contact / Query Form","Complete W3C Certified HTML","48 to 72 Hours TAT","Complete Deployment","100% Satisfaction Guarantee","100% Unique Design Guarantee"] },
+    { name:"Basic Package", badge:"Most Popular", features:["5 Stock Photos","5 Page Website","3 Banner Design","1 jQuery Slider Banner","FREE Google Friendly Sitemap","Complete W3C Certified HTML","48 to 72 Hours TAT","100% Satisfaction Guarantee","100% Unique Design Guarantee"] },
+    { name:"Professional Package", badge:"Best Value", features:["10 Pages Website","CMS / Admin Panel Support","8 Stock Images","5 Banner Designs","1 jQuery Slider Banner","Hover Effects","FREE Google Friendly Sitemap","Mobile Responsive","Complete W3C Certified HTML","100% Satisfaction Guarantee"] }
+  ],
+  mobile: [
+    { name:"App Basic", badge:null, features:["Single Platform (Android or iOS)","Up to 5 Screens","Basic UI/UX Design","Push Notifications","User Authentication","6 Months Support","Source Code Delivery","100% Satisfaction Guarantee"] },
+    { name:"App Plus", badge:"Most Popular", features:["Cross-Platform (Android & iOS)","Up to 15 Screens","Custom UI/UX Design","Push Notifications","Payment Gateway Integration","In-App Chat","12 Months Support","100% Satisfaction Guarantee"] },
+    { name:"App Infinity", badge:"Best Value", features:["Cross-Platform (Android & iOS)","Unlimited Screens","Premium UI/UX Design","Advanced Notifications","Full Backend Development","Admin Dashboard","24 Months Support","100% Satisfaction Guarantee"] }
+  ]
+};
+
+let currentCat = 'website';
+let userCountry = 'US';
+
+function getPrices(cat, country) {
+  const c = prices[country] || prices['US'];
+  const key = cat;
+  const oldKey = 'old' + cat.charAt(0).toUpperCase() + cat.slice(1);
+  return { amounts: c[key], old: c[oldKey] };
+}
+
+function renderPricing(cat, country) {
+  const grid = document.getElementById('pricing-grid');
+  const ps = getPrices(cat, country);
+  const pl = plans[cat];
+  grid.innerHTML = pl.map((plan, i) => `
+    <div class="price-card ${i === 1 ? 'featured' : ''} reveal">
+      <div class="price-card-head">
+        ${plan.badge ? `<div class="price-badge">${plan.badge}</div>` : ''}
+        <div class="price-name">${plan.name}</div>
+        <span class="price-amount">${ps.amounts[i]}</span>
+        ${ps.old ? `<span class="price-old">${ps.old[i]} only</span>` : ''}
+      </div>
+      <div class="price-card-body">
+        <ul class="price-list">
+          ${plan.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+        <div class="price-btns">
+          <a href="#contact" class="btn-primary">Order Now</a>
+          <a href="https://wa.me/923362099094" target="_blank" rel="noopener" class="btn-outline">Live Chat</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  observeReveal();
+}
+
+/* fetch geo */
+fetch('https://ipapi.co/json/')
+  .then(r => r.json())
+  .then(d => {
+    const cc = d.country_code;
+    userCountry = prices[cc] ? cc : 'US';
+    renderPricing(currentCat, userCountry);
+  })
+  .catch(() => {
+    userCountry = 'PK';
+    renderPricing(currentCat, userCountry);
+  });
+
+document.getElementById('pkg-tabs').addEventListener('click', e => {
+  const btn = e.target.closest('.pkg-tab');
+  if (!btn) return;
+  document.querySelectorAll('.pkg-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentCat = btn.dataset.cat;
+  renderPricing(currentCat, userCountry);
+});
+
+/* ── HAMBURGER ── */
+document.getElementById('hamburger').addEventListener('click', function() {
+  this.classList.toggle('open');
+  document.getElementById('nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('nav-links').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+
+/* ── REVEAL ON SCROLL ── */
+function observeReveal() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => obs.observe(el));
+}
+observeReveal();
+
+/* ── FORM ── */
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.submit-btn');
+  btn.disabled = true; btn.textContent = 'Sending...';
+  setTimeout(() => {
+    btn.textContent = '✓ Sent!';
+    document.getElementById('form-success').style.display = 'block';
+    setTimeout(() => {
+      btn.disabled = false; btn.textContent = 'Send Message ▶';
+      document.getElementById('form-success').style.display = 'none';
+      this.reset();
+    }, 4000);
+  }, 1200);
+});
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+</script>
+</body>
+</html>
