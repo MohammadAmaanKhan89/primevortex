@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — PrimeVortex</title>
+<meta name="description" content="Complete your order with PrimeVortex — Logo Design, Website Development, and Mobile App packages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --black:#000000;
+  --near-black:#0a0a0a;
+  --panel:#121212;
+  --panel-2:#161616;
+  --line:#262626;
+  --white:#ffffff;
+  --mist:#a6a6a6;
+  --red:#FF1A1A;
+  --red-dim:#7a0d0d;
+  --font-display:'Archivo',sans-serif;
+  --font-body:'Inter',sans-serif;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--font-body);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--red);color:var(--white);}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+input,textarea,select{font-family:inherit;color:inherit;background:none;border:none;outline:none;}
+
+/* ===== Loader ===== */
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--black);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;
+}
+.loader-mark{
+  width:64px;height:64px;border-radius:50%;
+  border:2px solid var(--line);border-top-color:var(--red);
+  animation:spin 0.9s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loader-text{font-family:var(--font-display);font-weight:800;letter-spacing:0.3em;font-size:12px;color:var(--mist);text-transform:uppercase;}
+
+/* ===== Background particles / vortex ===== */
+#vortex-canvas{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.55;
+}
+.grain{
+  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===== Nav ===== */
+header{
+  position:sticky;top:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 48px;
+  background:rgba(0,0,0,0.7);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.logo{
+  font-family:var(--font-display);font-weight:900;font-size:20px;letter-spacing:-0.02em;
+  display:flex;align-items:center;gap:10px;
+}
+.logo-dot{width:9px;height:9px;background:var(--red);border-radius:50%;box-shadow:0 0 14px var(--red);}
+.nav-secure{
+  display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mist);
+  letter-spacing:0.04em;
+}
+.nav-secure svg{width:14px;height:14px;stroke:var(--red);}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;z-index:2;
+  padding:90px 48px 60px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);
+  border:1px solid var(--red-dim);padding:7px 16px;border-radius:100px;
+  margin-bottom:26px;
+  background:rgba(255,26,26,0.06);
+}
+.hero h1{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(38px,6vw,74px);
+  letter-spacing:-0.03em;line-height:1.02;
+  background:linear-gradient(180deg,#fff 40%,#8a8a8a 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p.sub{
+  margin:22px auto 0;max-width:560px;
+  color:var(--mist);font-size:17px;line-height:1.6;
+}
+.trust-row{
+  display:flex;gap:34px;justify-content:center;flex-wrap:wrap;
+  margin-top:46px;
+}
+.trust-item{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.trust-item strong{font-family:var(--font-display);font-size:22px;font-weight:800;}
+.trust-item span{font-size:12px;color:var(--mist);letter-spacing:0.03em;}
+
+/* ===== Progress ===== */
+.progress-wrap{
+  max-width:1200px;margin:0 auto;padding:0 48px 40px;
+  position:relative;z-index:2;
+}
+.progress-track{
+  display:flex;align-items:center;gap:0;
+}
+.progress-step{
+  display:flex;align-items:center;gap:10px;flex:1;position:relative;
+}
+.progress-step .num{
+  width:34px;height:34px;border-radius:50%;
+  border:1.5px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;font-size:13px;
+  color:var(--mist);flex-shrink:0;
+  transition:all 0.4s ease;background:var(--near-black);
+}
+.progress-step.active .num{border-color:var(--red);color:var(--white);background:var(--red);box-shadow:0 0 18px rgba(255,26,26,0.5);}
+.progress-step.done .num{border-color:var(--red);color:var(--red);background:transparent;}
+.progress-step .label{font-size:13px;color:var(--mist);white-space:nowrap;}
+.progress-step.active .label{color:var(--white);}
+.progress-line{flex:1;height:1px;background:var(--line);position:relative;margin:0 6px;overflow:hidden;}
+.progress-line::after{
+  content:'';position:absolute;inset:0;background:var(--red);
+  transform:scaleX(0);transform-origin:left;transition:transform 0.6s ease;
+}
+.progress-line.filled::after{transform:scaleX(1);}
+
+/* ===== Layout ===== */
+.checkout-grid{
+  max-width:1200px;margin:0 auto;
+  padding:0 48px 120px;
+  display:grid;grid-template-columns:1fr 400px;gap:40px;
+  position:relative;z-index:2;
+}
+.panel{
+  background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px;margin-bottom:28px;
+  position:relative;
+}
+.panel h2{
+  font-family:var(--font-display);font-weight:800;font-size:20px;
+  margin-bottom:6px;letter-spacing:-0.01em;
+  display:flex;align-items:center;gap:10px;
+}
+.panel h2 .step-badge{
+  width:26px;height:26px;border-radius:8px;background:var(--red);
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;
+}
+.panel .hint{color:var(--mist);font-size:13.5px;margin-bottom:26px;}
+
+/* Service cards */
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.service-card{
+  border:1px solid var(--line);border-radius:12px;padding:22px 18px;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:transform 0.35s ease,border-color 0.35s ease;
+  background:var(--near-black);
+}
+.service-card:hover{transform:translateY(-4px);border-color:#3a3a3a;}
+.service-card.selected{border-color:var(--red);box-shadow:0 0 0 1px var(--red),0 0 30px rgba(255,26,26,0.15);}
+.service-card .icon{
+  width:42px;height:42px;border-radius:10px;background:rgba(255,26,26,0.1);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.service-card .icon svg{width:22px;height:22px;stroke:var(--red);}
+.service-card h3{font-family:var(--font-display);font-size:15.5px;font-weight:700;margin-bottom:6px;}
+.service-card p{font-size:12.5px;color:var(--mist);line-height:1.5;margin-bottom:14px;}
+.service-card .price{font-family:var(--font-display);font-weight:800;font-size:14px;color:var(--red);}
+.radio-dot{
+  position:absolute;top:16px;right:16px;width:18px;height:18px;border-radius:50%;
+  border:1.5px solid var(--line);
+}
+.service-card.selected .radio-dot{border-color:var(--red);background:radial-gradient(circle,var(--red) 40%,transparent 42%);}
+
+/* Package cards */
+.package-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.package-card{
+  border:1px solid var(--line);border-radius:12px;padding:20px 16px;
+  cursor:pointer;text-align:left;background:var(--near-black);
+  transition:transform 0.3s ease,border-color 0.3s ease;
+}
+.package-card:hover{transform:translateY(-3px);}
+.package-card.selected{border-color:var(--red);background:linear-gradient(180deg,rgba(255,26,26,0.08),transparent);}
+.package-card .tag{font-size:10.5px;letter-spacing:0.08em;text-transform:uppercase;color:var(--mist);}
+.package-card h4{font-family:var(--font-display);font-size:16px;font-weight:800;margin:6px 0 10px;}
+.package-card .amt{font-family:var(--font-display);font-size:22px;font-weight:900;}
+.package-card .amt small{font-size:11px;color:var(--mist);font-weight:500;}
+
+/* Extras */
+.extras-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.extra-item{
+  display:flex;align-items:center;justify-content:space-between;
+  border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+  cursor:pointer;background:var(--near-black);transition:border-color 0.25s ease;
+}
+.extra-item:hover{border-color:#3a3a3a;}
+.extra-item.checked{border-color:var(--red);}
+.extra-left{display:flex;align-items:center;gap:12px;}
+.checkbox{
+  width:20px;height:20px;border-radius:6px;border:1.5px solid var(--line);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:all 0.25s ease;
+}
+.extra-item.checked .checkbox{background:var(--red);border-color:var(--red);}
+.checkbox svg{width:12px;height:12px;stroke:var(--white);opacity:0;transform:scale(0.5);transition:all 0.2s ease;}
+.extra-item.checked .checkbox svg{opacity:1;transform:scale(1);}
+#terms-check.checked{background:var(--red);border-color:var(--red);}
+#terms-check.checked svg{opacity:1;transform:scale(1);}
+.extra-name{font-size:13.5px;font-weight:500;}
+.extra-price{font-size:12.5px;color:var(--mist);font-family:var(--font-display);font-weight:700;}
+
+/* Form fields */
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.field{position:relative;margin-bottom:22px;}
+.field.full{grid-column:1/-1;}
+.field input,.field textarea,.field select{
+  width:100%;border:1px solid var(--line);border-radius:10px;
+  padding:18px 16px 8px;background:var(--near-black);font-size:14.5px;
+  transition:border-color 0.25s ease;
+}
+.field textarea{min-height:100px;resize:vertical;padding-top:22px;}
+.field label{
+  position:absolute;left:16px;top:16px;font-size:14.5px;color:var(--mist);
+  pointer-events:none;transition:all 0.2s ease;
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--red);}
+.field input:focus + label,.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,.field textarea:not(:placeholder-shown) + label{
+  top:7px;font-size:10.5px;color:var(--red);letter-spacing:0.03em;
+}
+.field select{appearance:none;padding-top:16px;}
+.field .select-caret{position:absolute;right:16px;top:18px;pointer-events:none;color:var(--mist);font-size:11px;}
+.upload-box{
+  border:1.5px dashed var(--line);border-radius:10px;padding:26px;text-align:center;
+  cursor:pointer;font-size:13px;color:var(--mist);transition:border-color 0.25s ease;
+}
+.upload-box:hover{border-color:var(--red);color:var(--white);}
+
+/* Promo */
+.promo-row{display:flex;gap:10px;}
+.promo-row input{
+  flex:1;border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+  background:var(--near-black);font-size:13.5px;
+}
+.promo-row input:focus{border-color:var(--red);}
+.btn-apply{
+  padding:14px 22px;border-radius:10px;background:var(--white);color:var(--black);
+  font-weight:700;font-size:13px;white-space:nowrap;
+  transition:transform 0.2s ease;
+}
+.btn-apply:hover{transform:scale(1.04);}
+.promo-msg{font-size:12.5px;margin-top:10px;min-height:16px;}
+.promo-msg.success{color:#38d67e;}
+.promo-msg.error{color:var(--red);}
+
+/* Payment methods */
+.pay-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;}
+.pay-method{
+  border:1px solid var(--line);border-radius:10px;padding:16px 10px;text-align:center;
+  cursor:pointer;font-size:11.5px;font-weight:600;color:var(--mist);
+  transition:all 0.25s ease;background:var(--near-black);
+}
+.pay-method.selected{border-color:var(--red);color:var(--white);background:rgba(255,26,26,0.06);}
+.security-badges{display:flex;gap:20px;flex-wrap:wrap;margin-top:18px;}
+.security-badges span{
+  display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mist);
+}
+.security-badges svg{width:14px;height:14px;stroke:var(--red);}
+
+/* Terms */
+.terms-row{display:flex;align-items:flex-start;gap:12px;margin-top:6px;font-size:12.5px;color:var(--mist);line-height:1.6;
+  border:1px solid transparent;border-radius:10px;padding:10px;transition:border-color .25s ease,background .25s ease;}
+.terms-row a{color:var(--white);text-decoration:underline;text-underline-offset:3px;}
+.terms-row.required-flash{border-color:var(--red);background:rgba(255,26,26,0.08);animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+
+/* Sticky summary */
+.summary{
+  position:sticky;top:100px;align-self:start;
+  background:linear-gradient(180deg,var(--panel),var(--panel-2));
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px;
+}
+.summary h3{font-family:var(--font-display);font-weight:800;font-size:17px;margin-bottom:20px;}
+.summary-line{display:flex;justify-content:space-between;font-size:13.5px;padding:10px 0;border-bottom:1px solid var(--line);color:var(--mist);}
+.summary-line span.val{color:var(--white);font-weight:500;}
+.summary-line.discount span.val{color:#38d67e;}
+.summary-total{display:flex;justify-content:space-between;align-items:baseline;padding-top:18px;margin-top:6px;}
+.summary-total .label{font-size:13px;color:var(--mist);}
+.summary-total .amt{font-family:var(--font-display);font-weight:900;font-size:30px;}
+.delivery-est{
+  margin-top:16px;padding:12px 14px;border-radius:10px;background:rgba(255,26,26,0.07);
+  font-size:12.5px;color:var(--mist);display:flex;justify-content:space-between;
+}
+.cta-btn{
+  width:100%;margin-top:24px;padding:19px;border-radius:12px;
+  background:var(--red);color:var(--white);font-family:var(--font-display);
+  font-weight:800;font-size:15.5px;letter-spacing:0.01em;
+  position:relative;overflow:hidden;
+  transition:box-shadow 0.3s ease,opacity .3s ease;
+}
+.cta-btn:hover{box-shadow:0 0 40px rgba(255,26,26,0.55);}
+.cta-btn.disabled-look{opacity:0.55;box-shadow:none;}
+.cta-btn .spinner{
+  display:none;width:18px;height:18px;border:2px solid rgba(255,255,255,0.4);
+  border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;
+  position:absolute;left:50%;top:50%;margin:-9px 0 0 -9px;
+}
+.cta-btn.loading span{opacity:0;}
+.cta-btn.loading .spinner{display:block;}
+.terms-note{font-size:11.5px;color:var(--mist);text-align:center;margin-top:10px;}
+.terms-note.warn{color:var(--red);}
+
+/* ===== Payment Link Card (added) ===== */
+.pay-card{
+  background:#ffffff;color:#171717;
+  border-radius:20px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,0.5);
+  margin-bottom:28px;
+}
+.pay-card-header{
+  background:#000000;padding:26px 30px 22px;
+}
+.pay-card-header .pc-logo{
+  font-family:var(--font-display);font-weight:800;font-size:12px;
+  letter-spacing:0.12em;color:var(--red);margin-bottom:10px;
+}
+.pay-card-header h3{
+  font-family:var(--font-display);font-weight:800;font-size:20px;color:#fff;
+}
+.pay-card-body{padding:26px 30px 28px;}
+.pc-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:13px 0;border-bottom:1px solid #ececec;
+  font-size:13px;color:#8a8a8a;
+}
+.pc-row .v{color:#141414;font-weight:700;font-size:13px;}
+.pc-amount-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0 4px;margin-top:2px;
+}
+.pc-amount-row .lbl{font-weight:700;color:#141414;font-size:14.5px;}
+.pc-amount-row .amt{
+  font-family:var(--font-display);font-weight:900;font-size:26px;color:var(--red);
+}
+.pc-pay-btn{
+  width:100%;margin-top:18px;padding:16px;border-radius:12px;
+  background:#f28b96;color:#ffffff;
+  font-family:var(--font-display);font-weight:800;font-size:15px;
+  transition:filter 0.2s ease;
+}
+.pc-pay-btn:not(:disabled):hover{filter:brightness(0.94);}
+.pc-pay-btn:disabled{cursor:not-allowed;opacity:0.85;}
+.pc-error{
+  margin-top:16px;background:#fdecec;color:#c0392b;
+  border-radius:10px;padding:14px 16px;font-size:12px;line-height:1.5;
+}
+.pc-secure{
+  margin-top:20px;text-align:center;font-size:11.5px;color:#9a9a9a;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.pc-secure svg{width:13px;height:13px;stroke:#9a9a9a;}
+.pc-methods{
+  text-align:center;font-size:11.5px;color:#9a9a9a;margin-top:6px;
+}
+
+/* Contact sidebar (floating) */
+.help-float{
+  position:fixed;right:26px;bottom:26px;z-index:400;
+  background:var(--panel);border:1px solid var(--line);border-radius:16px;
+  padding:20px;width:230px;box-shadow:0 20px 50px rgba(0,0,0,0.6);
+  transform:translateY(120%);transition:transform 0.5s cubic-bezier(.2,.9,.3,1.2);
+}
+.help-float.show{transform:translateY(0);}
+.help-float h4{font-family:var(--font-display);font-size:13.5px;margin-bottom:10px;}
+.help-float p{font-size:12px;color:var(--mist);margin-bottom:4px;}
+.help-float .close-help{position:absolute;top:10px;right:12px;font-size:16px;color:var(--mist);}
+
+footer{
+  border-top:1px solid var(--line);padding:30px 48px;text-align:center;
+  font-size:12px;color:var(--mist);position:relative;z-index:2;
+}
+
+@media(max-width:980px){
+  .checkout-grid{grid-template-columns:1fr;padding:0 20px 80px;}
+  .service-grid,.package-grid,.field-grid,.extras-grid,.pay-grid{grid-template-columns:1fr 1fr;}
+  header{padding:16px 20px;}
+  .hero{padding:60px 20px 40px;}
+  .progress-wrap{padding:0 20px 30px;}
+  .progress-step .label{display:none;}
+  .summary{position:static;}
+  .help-float{display:none;}
+}
+@media(max-width:560px){
+  .service-grid,.package-grid,.extras-grid,.pay-grid{grid-template-columns:1fr;}
+  .field-grid{grid-template-columns:1fr;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}
+}
+</style>
+</head>
+<body>
+
+<div id="loader"><div class="loader-mark"></div><div class="loader-text">PrimeVortex</div></div>
+<canvas id="vortex-canvas"></canvas>
+<div class="grain"></div>
+
+<header>
+  <div class="logo"><span class="logo-dot"></span>PRIMEVORTEX</div>
+  <div class="nav-secure">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+    Secure Checkout
+  </div>
+</header>
+
+<section class="hero" data-reveal>
+  <div class="hero-eyebrow">● Building Solutions. Powering Futures.</div>
+  <h1>Complete Your Order</h1>
+  <p class="sub">You're only one step away from starting your project with PrimeVortex.</p>
+  <div class="trust-row">
+    <div class="trust-item"><strong>500+</strong><span>Completed Projects</span></div>
+    <div class="trust-item"><strong>300+</strong><span>Happy Clients</span></div>
+    <div class="trust-item"><strong>99%</strong><span>Satisfaction</span></div>
+    <div class="trust-item"><strong>256-bit</strong><span>SSL Secured</span></div>
+  </div>
+</section>
+
+<div class="progress-wrap" data-reveal>
+  <div class="progress-track" id="progress-track">
+    <div class="progress-step active" data-step="1"><div class="num">1</div><div class="label">Service</div></div>
+    <div class="progress-line" data-line="1"></div>
+    <div class="progress-step" data-step="2"><div class="num">2</div><div class="label">Package</div></div>
+    <div class="progress-line" data-line="2"></div>
+    <div class="progress-step" data-step="3"><div class="num">3</div><div class="label">Extras</div></div>
+    <div class="progress-line" data-line="3"></div>
+    <div class="progress-step" data-step="4"><div class="num">4</div><div class="label">Details</div></div>
+    <div class="progress-line" data-line="4"></div>
+    <div class="progress-step" data-step="5"><div class="num">5</div><div class="label">Payment</div></div>
+  </div>
+</div>
+
+<main class="checkout-grid">
+  <form class="left-col" id="order-form" autocomplete="off">
+
+    <!-- STEP 1 -->
+    <div class="panel" data-reveal>
+      <h2><span class="step-badge">1</span>Select Service</h2>
+      <p class="hint">Choose the service you'd like PrimeVortex to deliver.</p>
+      <div class="service-grid" id="service-grid">
+        <div class="service-card" data-service="logo">
+          <div class="radio-dot"></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Logo Design</h3>
+          <p>Distinct, memorable brand marks crafted for longevity.</p>
+          <div class="price">From PKR 14,999</div>
+        </div>
+        <div class="service-card" data-service="website">
+          <div class="radio-dot"></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></div>
+          <h3>Website Design &amp; Development</h3>
+          <p>Fast, modern websites engineered to convert.</p>
+          <div class="price">From PKR 49,999</div>
+        </div>
+        <div class="service-card" data-service="app">
+          <div class="radio-dot"></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+          <h3>Mobile Application Development</h3>
+          <p>Native-grade iOS &amp; Android apps, built to scale.</p>
+          <div class="price">From PKR 149,999</div>
+        </div>
+        <div class="service-card" data-service="seo">
+          <div class="radio-dot"></div>
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 4 5-8"/></svg></div>
+          <h3>SEO &amp; Digital Marketing</h3>
+          <p>Rank higher, get found, and grow organic traffic.</p>
+          <div class="price">From PKR 14,999</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="panel" data-reveal>
+      <h2><span class="step-badge">2</span>Select Package</h2>
+      <p class="hint" id="package-hint">Pick a service above to see available packages.</p>
+      <div class="package-grid" id="package-grid"></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="panel" data-reveal>
+      <h2><span class="step-badge">3</span>Extras</h2>
+      <p class="hint">Enhance your package with optional add-ons.</p>
+      <div class="extras-grid" id="extras-grid"></div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="panel" data-reveal>
+      <h2><span class="step-badge">4</span>Customer Details</h2>
+      <p class="hint">Tell us about you and your project.</p>
+      <div class="field-grid">
+        <div class="field"><input id="f-first" placeholder=" " type="text" required><label>First Name</label></div>
+        <div class="field"><input id="f-last" placeholder=" " type="text" required><label>Last Name</label></div>
+        <div class="field"><input id="f-company" placeholder=" " type="text"><label>Company Name (optional)</label></div>
+        <div class="field"><input id="f-email" placeholder=" " type="email" required ><label>Email Address</label></div>
+        <div class="field"><input id="f-phone" placeholder=" " type="tel" required><label>Phone Number</label></div>
+        <div class="field">
+          <select id="country-select"><option value="" required>Select country</option></select>
+          <label style="top:-8px;font-size:10.5px;color:var(--red);">Country</label>
+        </div>
+        <div class="field"><input id="f-city" placeholder=" " type="text" required><label>City</label></div>
+        <div class="field"><input id="f-zip" placeholder=" " type="text" required><label>ZIP Code</label></div>
+        <div class="field full"><input id="f-address" placeholder=" " type="text" required><label>Address</label></div>
+        <div class="field full"><textarea id="f-desc" placeholder=" " required></textarea><label>Project Description</label></div>
+        <div class="field"><input id="f-ref" placeholder=" " type="text"><label>Reference Website (optional)</label></div>
+        <div class="field"><input id="f-deadline" placeholder=" " type="date" required><label style="top:-8px;font-size:10.5px;color:var(--red);">Preferred Deadline</label></div>
+        <div class="field full">
+          <label style="position:static;display:block;margin-bottom:8px;font-size:12.5px;color:var(--mist);">Upload Reference Files</label>
+          <div class="upload-box">Drag files here or click to browse</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="panel" data-reveal>
+      <h2><span class="step-badge">5</span>Payment Method</h2>
+      <p class="hint">You'll enter your card, Alfa Wallet, or bank account details on Bank Alfalah's secure payment page — never on this site.</p>
+      <div class="pay-grid" id="pay-grid">
+        <div class="pay-method selected" data-pay="card">Credit / Debit Card</div>
+        <div class="pay-method" data-pay="alfawallet">Alfa Wallet</div>
+        <div class="pay-method" data-pay="bankaccount">Bank Account</div>
+      </div>
+      <div class="security-badges">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>256-bit SSL Secured</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>PCI DSS Protected</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Secured by Bank Alfalah</span>
+      </div>
+      <div class="terms-row" id="terms-row">
+        <div class="checkbox" id="terms-check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div>I have read and agree to the <a href="#terms">Terms &amp; Conditions</a>, <a href="#privacy">Privacy Policy</a>, and <a href="#refund">Refund Policy</a>. <strong>Payment cannot be processed until this is checked.</strong></div>
+      </div>
+    </div>
+  </form>
+
+  <!-- RIGHT COLUMN -->
+  <div class="right-col">
+
+    <!-- Payment Link Card -->
+    <div class="pay-card" data-reveal>
+      <div class="pay-card-header">
+        <div class="pc-logo">PRIMEVORTEX</div>
+        <h3>PrimeVortex Service</h3>
+      </div>
+      <div class="pay-card-body">
+        <div class="pc-row"><span>Order reference</span><span class="v" id="pc-order-ref">—</span></div>
+        <div class="pc-row"><span>Service</span><span class="v" id="pc-service">PrimeVortex Service</span></div>
+        <div class="pc-amount-row">
+          <span class="lbl">Amount due</span>
+          <span class="amt" id="pc-amount">PKR 0</span>
+        </div>
+        <button class="pc-pay-btn" id="pc-pay-btn" type="button" disabled>Pay Now</button>
+        <div class="pc-error" id="pc-error">No valid amount was provided. Please select a service and package to continue.</div>
+        <div class="pc-secure">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+          Secured by Bank Alfalah — your card details never touch this site
+        </div>
+        <div class="pc-methods">Credit/Debit Card &nbsp;•&nbsp; Alfa Wallet &nbsp;•&nbsp; Bank Account</div>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <aside class="summary" data-reveal>
+      <h3>Order Summary</h3>
+      <div class="summary-line"><span>Service</span><span class="val" id="sum-service">—</span></div>
+      <div class="summary-line"><span>Package</span><span class="val" id="sum-package">—</span></div>
+      <div class="summary-line"><span>Add-ons</span><span class="val" id="sum-extras">None</span></div>
+      <div class="summary-line"><span>Subtotal</span><span class="val" id="sum-subtotal">PKR 0</span></div>
+      <div class="summary-line discount"><span>Discount</span><span class="val" id="sum-discount">–PKR 0</span></div>
+      <div class="summary-line"><span>Tax</span><span class="val" id="sum-tax">PKR 0</span></div>
+
+      <div class="promo-row" style="margin-top:16px;">
+        <input type="text" id="promo-input" placeholder="Enter Promo Code">
+        <button class="btn-apply" type="button" id="promo-apply">Apply</button>
+      </div>
+      <div class="promo-msg" id="promo-msg"></div>
+
+      <div class="summary-total">
+        <div class="label">Grand Total</div>
+        <div class="amt" id="sum-total">PKR 0</div>
+      </div>
+      <div class="delivery-est"><span>Estimated Delivery</span><span id="sum-delivery">—</span></div>
+
+      <button class="cta-btn disabled-look" id="submit-btn" type="button"><span>Start My Project</span><div class="spinner"></div></button>
+      <div class="terms-note" id="terms-note">Accept the Terms &amp; Conditions above to enable payment.</div>
+    </aside>
+  </div>
+</main>
+
+<footer>© 2026 PrimeVortex. Building Solutions. Powering Futures.</footer>
+
+<!-- Help float -->
+<div class="help-float" id="help-float">
+  <div class="close-help" id="close-help">×</div>
+  <h4>Need Help?</h4>
+  <p>📞 +92 336 2099094</p>
+  <p>✉️ primevortex1472@gmail.com</p>
+  <p style="margin-top:8px;">Tariq Center Office #201, 2nd Floor, Main Tariq Road, PECHS, Karachi</p>
+</div>
+
+<script>
+/* ============ Data (PKR only — must match catalog.php on the server) ============ */
+const PACKAGES = {
+  logo: [
+    { id:'classic',   tag:'Classic',     name:'Logo Basic',     price:14999,   delivery:'3 days' },
+    { id:'premium',   tag:'Premium',     name:'Logo Plus',     price:29999,  delivery:'4 days' },
+    { id:'unlimited', tag:'Unlimited',   name:'Logo Infinity',   price:49999,  delivery:'5 days' },
+  ],
+  website: [
+    { id:'business',     tag:'Business',     name:'Website Basic',     price:49999,  delivery:'12 days' },
+    { id:'professional', tag:'Professional', name:'Website Plus', price:99999, delivery:'18 days' },
+    { id:'enterprise',   tag:'Enterprise',   name:'Website Infinity',   price:149999, delivery:'30 days' },
+  ],
+  app: [
+    { id:'basic',      tag:'Basic',      name:'App Basic',      price:149999,  delivery:'20 days' },
+    { id:'standard',   tag:'Standard',   name:'App Plus',   price:249999, delivery:'35 days' },
+    { id:'advanced',   tag:'Advanced',   name:'App Infinity',   price:499999, delivery:'50 days' },
+  ],
+  seo: [
+    { id:'basic',      tag:'Basic',      name:'Basic',      price:14999, delivery:'14 days' },
+    { id:'growth',     tag:'Growth',     name:'Growth',     price:29999, delivery:'21 days' },
+    { id:'pro',        tag:'Pro',        name:'Pro',        price:59999, delivery:'30 days' },
+    { id:'enterprise', tag:'Enterprise', name:'Enterprise', price:99999, delivery:'45 days' },
+  ]
+};
+const SERVICE_LABELS = { logo:'Logo Design', website:'Website Design & Development', app:'Mobile Application Development', seo:'SEO & Digital Marketing' };
+
+const EXTRAS = [
+  { id:'social', name:'Social Media Kit', price:3999 },
+  { id:'card', name:'Business Card Design', price:2999 },
+  { id:'stationery', name:'Stationery Design', price:3499 },
+  { id:'fast', name:'Extra Fast Delivery', price:5999 },
+  { id:'source', name:'Source Files', price:2499 },
+  { id:'seo', name:'SEO Optimization', price:7999 },
+  { id:'hosting', name:'Hosting Setup', price:4999 },
+  { id:'domain', name:'Domain Registration', price:1999 },
+  { id:'maintenance', name:'Maintenance (1yr)', price:9999 },
+  { id:'appstore', name:'App Store Publishing', price:6999 },
+];
+
+const COUNTRIES = ['Pakistan','United States','United Kingdom','Canada','Australia','Saudi Arabia','United Arab Emirates','Germany','France','India'];
+
+let state = { service:null, package:null, extras:new Set(), pay:'card', discount:0, promoCode:'', promoApplied:false, termsAccepted:false };
+
+/* ============ Formatting — PKR only ============ */
+function fmt(amountPKR){
+  return 'PKR ' + Math.round(amountPKR).toLocaleString('en-PK');
+}
+
+/* ============ Payment Link Card ============ */
+function genOrderRef(){
+  return 'PV-' + Date.now().toString().slice(-8);
+}
+let displayedOrderRef = genOrderRef();
+document.getElementById('pc-order-ref').textContent = displayedOrderRef;
+
+function updatePayCard(){
+  const amtEl = document.getElementById('pc-amount');
+  const btn = document.getElementById('pc-pay-btn');
+  const err = document.getElementById('pc-error');
+  const svc = document.getElementById('pc-service');
+  svc.textContent = state.service ? SERVICE_LABELS[state.service] : 'PrimeVortex Service';
+
+  const total = computeTotal();
+
+  if(total > 0){
+    amtEl.textContent = fmt(total);
+    btn.disabled = !state.termsAccepted;
+    err.style.display = state.termsAccepted ? 'none' : 'block';
+    err.textContent = state.termsAccepted ? '' : 'Please accept the Terms & Conditions to enable payment.';
+  } else {
+    amtEl.textContent = 'PKR 0';
+    btn.disabled = true;
+    err.style.display = 'block';
+    err.textContent = 'No valid amount was provided. Please select a service and package to continue.';
+  }
+}
+document.getElementById('pc-pay-btn').addEventListener('click', ()=>{
+  if(!document.getElementById('pc-pay-btn').disabled){
+    document.getElementById('submit-btn').click();
+  }
+});
+
+/* ============ Loader ============ */
+window.addEventListener('load',()=>{
+  gsap.to('#loader',{opacity:0,duration:0.6,delay:0.5,onComplete:()=>{
+    document.getElementById('loader').style.display='none';
+    runEntranceAnims();
+  }});
+});
+
+function runEntranceAnims(){
+  gsap.from('.hero-eyebrow',{y:20,opacity:0,duration:0.7,ease:'power3.out'});
+  gsap.from('.hero h1',{y:30,opacity:0,duration:0.8,delay:0.1,ease:'power3.out'});
+  gsap.from('.hero p.sub',{y:20,opacity:0,duration:0.7,delay:0.25,ease:'power3.out'});
+  gsap.from('.trust-item',{y:16,opacity:0,duration:0.6,stagger:0.08,delay:0.4,ease:'power3.out'});
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('[data-reveal]').forEach((el,i)=>{
+    gsap.from(el,{
+      y:36,opacity:0,duration:0.7,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}
+    });
+  });
+}
+
+/* ============ Vortex background particles ============ */
+const canvas = document.getElementById('vortex-canvas');
+const ctx = canvas.getContext('2d');
+function resize(){ canvas.width=innerWidth; canvas.height=innerHeight; }
+resize(); addEventListener('resize',resize);
+const particles = Array.from({length:70},()=>({
+  x:Math.random()*innerWidth, y:Math.random()*innerHeight,
+  r:Math.random()*1.8+0.4, vy:Math.random()*0.3+0.05, a:Math.random()*0.5+0.1
+}));
+function loop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.y -= p.vy;
+    if(p.y < -10) p.y = innerHeight+10;
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(255,26,26,${p.a})`;
+    ctx.arc(p.x,p.y,p.r,0,7);
+    ctx.fill();
+  });
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* ============ Populate country ============ */
+const countrySel = document.getElementById('country-select');
+COUNTRIES.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; countrySel.appendChild(o); });
+
+/* ============ Progress ============ */
+function updateProgress(){
+  document.querySelectorAll('.progress-step').forEach((el,i)=>{
+    const n = i+1;
+    el.classList.remove('active','done');
+    if(n===1) { const c=state.service?'done':'active'; if(c) el.classList.add(c); }
+    if(n===2) { const c=state.package?'done':(state.service?'active':''); if(c) el.classList.add(c); }
+    if(n===3) { const c=state.extras.size>0?'done':(state.package?'active':''); if(c) el.classList.add(c); }
+    if(n===5) { const c=state.pay?'done':(state.package?'active':''); if(c) el.classList.add(c); }
+  });
+  document.querySelectorAll('.progress-line').forEach((el,i)=>{
+    const n=i+1;
+    if((n===1&&state.service)||(n===2&&state.package)||(n===3&&state.package)||(n===4&&state.package)) el.classList.add('filled');
+  });
+}
+
+/* ============ Service select ============ */
+document.querySelectorAll('.service-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('.service-card').forEach(c=>c.classList.remove('selected'));
+    card.classList.add('selected');
+    state.service = card.dataset.service;
+    gsap.fromTo(card,{scale:0.97},{scale:1,duration:0.35,ease:'back.out(2)'});
+    renderPackages();
+    updateProgress();
+    updateSummary();
+  });
+});
+
+/* ============ Packages ============ */
+function renderPackages(){
+  const grid = document.getElementById('package-grid');
+  const hint = document.getElementById('package-hint');
+  grid.innerHTML='';
+  if(!state.service){ hint.textContent='Pick a service above to see available packages.'; return; }
+  hint.textContent = `Choose your ${SERVICE_LABELS[state.service]} package.`;
+  PACKAGES[state.service].forEach(pkg=>{
+    const div = document.createElement('div');
+    div.className='package-card';
+    div.dataset.id=pkg.id;
+    div.innerHTML = `<div class="tag">${pkg.tag}</div><h4>${pkg.name}</h4><div class="amt">${fmt(pkg.price)}<small> /project</small></div>`;
+    div.addEventListener('click',()=>{
+      grid.querySelectorAll('.package-card').forEach(c=>c.classList.remove('selected'));
+      div.classList.add('selected');
+      state.package = pkg;
+      gsap.fromTo(div,{scale:0.96},{scale:1,duration:0.3,ease:'back.out(2)'});
+      updateProgress(); updateSummary();
+    });
+    grid.appendChild(div);
+  });
+  state.package=null; updateSummary();
+}
+
+/* ============ Extras ============ */
+const extrasGrid = document.getElementById('extras-grid');
+EXTRAS.forEach(ex=>{
+  const div = document.createElement('div');
+  div.className='extra-item';
+  div.innerHTML = `<div class="extra-left"><div class="checkbox"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div><div class="extra-name">${ex.name}</div></div><div class="extra-price">+${fmt(ex.price)}</div>`;
+  div.addEventListener('click',()=>{
+    div.classList.toggle('checked');
+    if(div.classList.contains('checked')) state.extras.add(ex.id); else state.extras.delete(ex.id);
+    updateSummary();
+  });
+  extrasGrid.appendChild(div);
+});
+
+/* ============ Payment method (informational only — actual method chosen on Bank Alfalah's page) ============ */
+document.querySelectorAll('.pay-method').forEach(m=>{
+  m.addEventListener('click',()=>{
+    document.querySelectorAll('.pay-method').forEach(x=>x.classList.remove('selected'));
+    m.classList.add('selected');
+    state.pay = m.dataset.pay;
+    updateProgress();
+  });
+});
+
+/* ============ Terms checkbox — hard gate on payment ============ */
+const termsCheckEl = document.getElementById('terms-check');
+const termsRowEl = document.getElementById('terms-row');
+termsCheckEl.addEventListener('click',function(){
+  this.classList.toggle('checked');
+  state.termsAccepted = this.classList.contains('checked');
+  termsRowEl.classList.remove('required-flash');
+  updateSummary();
+});
+
+/* ============ Promo ============ */
+const PROMO_CODES = { 'PRIME10': 0.10 };
+document.getElementById('promo-apply').addEventListener('click',()=>{
+  const code = document.getElementById('promo-input').value.trim().toUpperCase();
+  const msg = document.getElementById('promo-msg');
+  if(PROMO_CODES.hasOwnProperty(code)){
+    state.discount = PROMO_CODES[code]; state.promoApplied=true; state.promoCode = code;
+    msg.textContent='Promo applied — ' + Math.round(state.discount*100) + '% off!'; msg.className='promo-msg success';
+  } else if(code.length===0){
+    msg.textContent='Please enter a promo code.'; msg.className='promo-msg error';
+  } else {
+    state.discount=0; state.promoApplied=false; state.promoCode='';
+    msg.textContent='Invalid promo code.'; msg.className='promo-msg error';
+  }
+  gsap.fromTo(msg,{y:-6,opacity:0},{y:0,opacity:1,duration:0.3});
+  updateSummary();
+});
+
+/* ============ Summary calc ============ */
+function computeSubtotal(){
+  let subtotal = state.package ? state.package.price : 0;
+  EXTRAS.forEach(ex=>{ if(state.extras.has(ex.id)) subtotal += ex.price; });
+  return subtotal;
+}
+function computeTotal(){
+  const subtotal = computeSubtotal();
+  const discountAmt = subtotal * state.discount;
+  return subtotal - discountAmt;
+}
+function updateSummary(){
+  document.getElementById('sum-service').textContent = state.service ? SERVICE_LABELS[state.service] : '—';
+  document.getElementById('sum-package').textContent = state.package ? state.package.name : '—';
+  const extrasCount = state.extras.size;
+  document.getElementById('sum-extras').textContent = extrasCount ? `${extrasCount} selected` : 'None';
+
+  const subtotal = computeSubtotal();
+  const discountAmt = subtotal * state.discount;
+  const tax = 0;
+  const total = subtotal - discountAmt + tax;
+
+  document.getElementById('sum-subtotal').textContent = fmt(subtotal);
+  document.getElementById('sum-discount').textContent = '–' + fmt(discountAmt);
+  document.getElementById('sum-tax').textContent = fmt(tax);
+  document.getElementById('sum-total').textContent = fmt(total);
+  document.getElementById('sum-delivery').textContent = state.package ? state.package.delivery : '—';
+
+  const ctaBtn = document.getElementById('submit-btn');
+  const termsNote = document.getElementById('terms-note');
+  const canPay = state.service && state.package && state.termsAccepted && total > 0;
+  ctaBtn.classList.toggle('disabled-look', !canPay);
+  if(!state.termsAccepted){
+    termsNote.textContent = 'Accept the Terms & Conditions above to enable payment.';
+    termsNote.className='terms-note warn';
+  } else if(!state.service || !state.package){
+    termsNote.textContent = 'Select a service and package to continue.';
+    termsNote.className='terms-note';
+  } else {
+    termsNote.textContent = 'You will be redirected to Bank Alfalah\'s secure payment page.';
+    termsNote.className='terms-note';
+  }
+
+  updatePayCard();
+}
+updateSummary();
+
+/* ============ Magnetic button ============ */
+const cta = document.getElementById('submit-btn');
+cta.addEventListener('mousemove',e=>{
+  const r = cta.getBoundingClientRect();
+  const x = e.clientX - r.left - r.width/2;
+  const y = e.clientY - r.top - r.height/2;
+  gsap.to(cta,{x:x*0.15,y:y*0.35,duration:0.3,ease:'power2.out'});
+});
+cta.addEventListener('mouseleave',()=>gsap.to(cta,{x:0,y:0,duration:0.4,ease:'elastic.out(1,0.4)'}));
+
+/* ============ Submit — hard gate: nothing is sent unless terms are checked ============ */
+cta.addEventListener('click',()=>{
+  if(!state.service || !state.package){
+    alert('Please select a service and package before continuing.');
+    return;
+  }
+  if(!state.termsAccepted){
+    termsRowEl.classList.add('required-flash');
+    termsRowEl.scrollIntoView({behavior:'smooth', block:'center'});
+    return; // hard stop — payment will NOT proceed without this
+  }
+  const first = document.getElementById('f-first').value.trim();
+  const last = document.getElementById('f-last').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const phone = document.getElementById('f-phone').value.trim();
+  if(!first || !last || !email || !phone){
+    alert('Please complete your name, email and phone number in Customer Details.');
+    document.getElementById('f-first').closest('.panel').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+
+  cta.classList.add('loading');
+
+  // Build a real POST to the server, which re-validates everything,
+  // performs the Bank Alfalah handshake, and redirects to the secure
+  // payment page. Nothing here fakes a "success" state client-side.
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = 'create_order.php';
+
+  const addField = (name, value) => {
+    const input = document.createElement('input');
+    input.type = 'hidden'; input.name = name; input.value = value;
+    form.appendChild(input);
+  };
+
+  addField('service', state.service);
+  addField('package', state.package.id);
+  state.extras.forEach(exId => addField('extras[]', exId));
+  addField('promo', state.promoCode);
+  addField('first_name', first);
+  addField('last_name', last);
+  addField('email', email);
+  addField('phone', phone);
+  addField('terms', state.termsAccepted ? '1' : '0');
+
+  document.body.appendChild(form);
+  form.submit();
+});
+
+/* ============ Help float ============ */
+setTimeout(()=>document.getElementById('help-float').classList.add('show'),2500);
+document.getElementById('close-help').addEventListener('click',()=>document.getElementById('help-float').classList.remove('show'));
+
+/* ============ Card tilt on service cards ============ */
+document.querySelectorAll('.service-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left)/r.width - 0.5;
+    const y = (e.clientY - r.top)/r.height - 0.5;
+    gsap.to(card,{rotateY:x*8,rotateX:-y*8,transformPerspective:600,duration:0.3,ease:'power2.out'});
+  });
+  card.addEventListener('mouseleave',()=>gsap.to(card,{rotateY:0,rotateX:0,duration:0.5,ease:'power3.out'}));
+});
+</script>
+</body>
+</html>
